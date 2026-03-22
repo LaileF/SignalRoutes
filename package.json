@@ -2,7 +2,6 @@
   "name": "astro-blog-starter-template",
   "description": "Build a personal website, blog, or portfolio with Astro.",
   "dependencies": {
-    "@astrojs/cloudflare": "12.6.12",
     "@astrojs/mdx": "4.3.13",
     "@astrojs/rss": "4.0.14",
     "@astrojs/sitemap": "3.6.1",
