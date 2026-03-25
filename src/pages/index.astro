@@ -13,12 +13,23 @@
   color:#1a1a1a;
 ">
 
+<!-- BACKGROUND CIRCUIT LAYER -->
+<div style="
+  position:fixed;
+  inset:0;
+  background-image:
+    radial-gradient(circle at 20% 20%, rgba(180,140,40,0.08), transparent 40%),
+    radial-gradient(circle at 80% 80%, rgba(180,140,40,0.08), transparent 40%);
+  z-index:0;
+"></div>
+
 <main style="
   position:relative;
   width:100%;
   height:100vh;
   max-width:1400px;
   margin:0 auto;
+  z-index:1;
 ">
 
   <!-- CENTER HUB -->
@@ -29,13 +40,14 @@
     transform:translate(-50%, -50%);
     text-align:center;
     z-index:3;
+    width:360px;
   ">
 
-    <!-- GOLD/GREEN SIGNAL GLOW -->
+    <!-- pulse glow -->
     <div style="
       position:absolute;
-      width:320px;
-      height:320px;
+      width:380px;
+      height:380px;
       top:50%;
       left:50%;
       transform:translate(-50%, -50%);
@@ -46,63 +58,85 @@
 
     <div style="
       position:relative;
-      padding:30px 40px;
-      border-radius:18px;
+      padding:34px;
+      border-radius:20px;
       background:white;
       border:1px solid #e5e5e5;
       box-shadow:0 30px 80px rgba(0,0,0,0.12);
       z-index:1;
-      width:300px;
     ">
-      <img src="/logo.png" style="height:60px;" />
-      <h2 style="margin:10px 0;">SignalRoutes</h2>
-      <p style="color:#555;">Clear signals. Better decisions.</p>
+      <img src="/logo.png" style="height:70px;" />
+
+      <h1 style="margin:12px 0 8px;">SignalRoutes</h1>
+
+      <p style="font-weight:600;">Clear signals. Better decisions.</p>
+
+      <p style="font-size:14px; color:#555; line-height:1.6;">
+        A system of tools designed to cut through noise across money,
+        business, news, and compliance—giving you clarity on what matters
+        and what to do next.
+      </p>
     </div>
 
   </div>
 
-  <!-- SVG CONNECTIONS (CLEAN, NO X) -->
+  <!-- CONNECTIONS + ANIMATION -->
   <svg style="position:absolute; inset:0; z-index:1;">
 
-    <!-- lines from center -->
-    <line x1="700" y1="400" x2="200" y2="120" stroke="rgba(180,140,40,0.4)" stroke-width="2"/>
-    <line x1="700" y1="400" x2="1200" y2="120" stroke="rgba(180,140,40,0.4)" stroke-width="2"/>
-    <line x1="700" y1="400" x2="200" y2="700" stroke="rgba(180,140,40,0.4)" stroke-width="2"/>
-    <line x1="700" y1="400" x2="1200" y2="700" stroke="rgba(180,140,40,0.4)" stroke-width="2"/>
+    <!-- lines -->
+    <line x1="700" y1="400" x2="200" y2="120" stroke="rgba(180,140,40,0.25)" stroke-width="2"/>
+    <line x1="700" y1="400" x2="1200" y2="120" stroke="rgba(180,140,40,0.25)" stroke-width="2"/>
+    <line x1="700" y1="400" x2="200" y2="700" stroke="rgba(180,140,40,0.25)" stroke-width="2"/>
+    <line x1="700" y1="400" x2="1200" y2="700" stroke="rgba(180,140,40,0.25)" stroke-width="2"/>
+
+    <!-- animated signal -->
+    <circle r="4" fill="#b48c28">
+      <animateMotion dur="2s" repeatCount="indefinite"
+        path="M 700 400 L 200 120" />
+    </circle>
+
+    <circle r="4" fill="#b48c28">
+      <animateMotion dur="2s" repeatCount="indefinite"
+        path="M 700 400 L 1200 120" />
+    </circle>
 
   </svg>
 
-  <!-- CARDS (BIGGER + READABLE) -->
+  <!-- CARDS -->
 
-  <!-- TL -->
-  <div class="card" style="top:8%; left:8%;">
+  <div class="card" style="top:6%; left:6%;">
     <img src="/founderroutes.png" />
     <h3>FounderRoutes</h3>
-    <p>Build your business with clarity. Know what to do now—and what not to do.</p>
+    <p>
+      Build your business with clarity. Know what to do now—and what not to do.
+    </p>
     <a href="#">Visit →</a>
   </div>
 
-  <!-- TR -->
-  <div class="card" style="top:8%; right:8%;">
+  <div class="card" style="top:6%; right:6%;">
     <img src="/spendscore.png" />
     <h3>SpendScore</h3>
-    <p>Understand your money in real time. Build better habits without complexity.</p>
+    <p>
+      Understand your money in real time. Build better habits without complexity.
+    </p>
     <p class="sub">Launching April 1</p>
   </div>
 
-  <!-- BL -->
-  <div class="card" style="bottom:8%; left:8%;">
+  <div class="card" style="bottom:6%; left:6%;">
     <img src="/sourcebrief.png" />
     <h3>SourceBrief</h3>
-    <p>The news, distilled. What matters. What’s true. Nothing extra.</p>
+    <p>
+      The news, distilled. What matters. What’s true. Nothing extra.
+    </p>
     <a href="https://forms.gle/ZmfuxiLXw5wnSC257">Join waitlist →</a>
   </div>
 
-  <!-- BR -->
-  <div class="card" style="bottom:8%; right:8%;">
+  <div class="card" style="bottom:6%; right:6%;">
     <div class="icon">⚖️</div>
     <h3>ComplianceIQ</h3>
-    <p>Stay ahead of compliance without drowning in updates.</p>
+    <p>
+      Stay ahead of compliance without drowning in updates.
+    </p>
     <p class="sub">Coming soon</p>
   </div>
 
@@ -111,23 +145,23 @@
 <style>
 .card {
   position:absolute;
-  width:320px;
-  padding:26px;
-  border-radius:18px;
+  width:360px;
+  padding:28px;
+  border-radius:20px;
   background:white;
   border:1px solid #e5e5e5;
-  box-shadow:0 15px 40px rgba(0,0,0,0.08);
+  box-shadow:0 15px 50px rgba(0,0,0,0.08);
   transition:all .25s ease;
 }
 
 .card img {
-  width:48px;
-  margin-bottom:12px;
+  width:52px;
+  margin-bottom:14px;
 }
 
 .card:hover {
   transform:scale(1.05);
-  box-shadow:0 25px 80px rgba(180,140,40,0.35);
+  box-shadow:0 30px 100px rgba(180,140,40,0.35);
 }
 
 .sub {
@@ -136,14 +170,14 @@
 }
 
 .icon {
-  width:48px;
-  height:48px;
+  width:52px;
+  height:52px;
   display:flex;
   align-items:center;
   justify-content:center;
   background:#fafafa;
   border-radius:10px;
-  margin-bottom:12px;
+  margin-bottom:14px;
 }
 
 @keyframes pulse {
