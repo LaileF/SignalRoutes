@@ -3,96 +3,148 @@
 
 <html lang="en">
   <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width" />
     <title>SignalRoutes</title>
-   </head>
+  </head>
 
-    <body style="
-    margin:0;
-    font-family:system-ui, sans-serif;
-   background:
-    radial-gradient(circle at 20% 20%, rgba(0,0,0,0.03) 1px, transparent 1px),
-    radial-gradient(circle at 80% 60%, rgba(0,0,0,0.03) 1px, transparent 1px),
-    #f7f6f3;
-   background-size: 60px 60px, 80px 80px;
-   color:#1a1a1a;
+  <body style="
+    font-family: system-ui, sans-serif;
+    margin: 0;
+    background: #f8f7f4;
+    color: #1a1a1a;
+  ">
+
+    <!-- BACKGROUND (subtle circuit feel) -->
+    <div style="
+      position: fixed;
+      inset: 0;
+      background-image:
+        radial-gradient(circle at 20% 20%, rgba(0,0,0,0.03) 1px, transparent 1px),
+        radial-gradient(circle at 80% 60%, rgba(0,0,0,0.03) 1px, transparent 1px);
+      background-size: 80px 80px;
+      pointer-events: none;
+      z-index: 0;
+    "></div>
+
+    <main style="
+      position: relative;
+      z-index: 1;
+      max-width: 1200px;
+      margin: 40px auto;
+      padding: 20px;
     ">
 
-    <main style="max-width:1100px; margin:40px auto; padding:24px;">
-
       <!-- HEADER -->
-      <div style="display:flex; align-items:center; gap:16px; margin-bottom:20px;">
-        <img src="/logo.png" alt="SignalRoutes logo" style="height:80px;" />
+      <div style="
+        display:flex;
+        align-items:center;
+        gap:16px;
+        margin-bottom:30px;
+      ">
+        <img src="/logo.png" style="height:70px;" />
         <h1 style="margin:0; font-size:34px;">SignalRoutes</h1>
       </div>
 
-      <p style="font-size:18px; font-weight:600; margin-bottom:10px;">
+      <p style="font-weight:600; font-size:18px; margin-bottom:6px;">
         Clear signals. Better decisions.
       </p>
 
-      <p style="line-height:1.6; margin-bottom:40px;">
+      <p style="max-width:700px; margin-bottom:40px; line-height:1.6;">
         A suite of apps designed to help people cut through noise and make better decisions across money, business, news, and compliance.
       </p>
 
       <!-- PRODUCTS -->
-      <h2 style="margin-bottom:24px;">Products</h2>
+      <h2 style="margin-bottom:20px;">Products</h2>
 
-        <div style="display:grid; grid-template-columns: repeat(2, 1fr); gap:20px;">
+      <div style="
+        display:grid;
+        grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+        gap:24px;
+      ">
 
         <!-- FounderRoutes -->
-        <div style="display:flex; gap:20px; padding:24px; border-radius:16px; background:white; border:1px solid #e8e8e8; box-shadow:0 4px 12px rgba(0,0,0,0.04); align-items:center;">
-          <img src="/founderroutes.png" style="width:64px; height:64px;" />
-          <div>
-            <strong style="font-size:18px;">FounderRoutes</strong><br />
-            <span style="color:#555;">Build your business with clarity. Know what to do now—and what not to do.</span><br />
-            <a href="https://founder-routes-app-rep-production.up.railway.app/">Visit →</a>
-          </div>
+        <div style="
+          padding:20px;
+          border-radius:14px;
+          background:white;
+          border:1px solid #e5e5e5;
+          box-shadow: 0 4px 12px rgba(0,0,0,0.04);
+        ">
+          <img src="/founderroutes.png" style="width:48px; height:48px;" />
+          <h3 style="margin:10px 0 6px 0;">FounderRoutes</h3>
+          <p style="margin:0 0 10px 0; font-size:14px;">
+            Build your business with clarity. Know what to do now—and what not to do.
+          </p>
+          <a href="#" target="_blank" style="font-size:14px;">Visit →</a>
         </div>
 
         <!-- SpendScore -->
-        <div style="display:flex; gap:20px; padding:24px; border-radius:16px; background:white; border:1px solid #e8e8e8; box-shadow:0 4px 12px rgba(0,0,0,0.04); align-items:center;">
-          <img src="/spendscore.png" style="width:64px; height:64px;" />
-          <div>
-            <strong style="font-size:18px;">SpendScore</strong><br />
-            <span style="color:#555;">Understand your money in real time. Build better habits without complexity.</span><br />
-            <em>Launching April 1 on Google Play</em>
-          </div>
+        <div style="
+          padding:20px;
+          border-radius:14px;
+          background:white;
+          border:1px solid #e5e5e5;
+          box-shadow: 0 4px 12px rgba(0,0,0,0.04);
+        ">
+          <img src="/spendscore.png" style="width:48px; height:48px;" />
+          <h3 style="margin:10px 0 6px 0;">SpendScore</h3>
+          <p style="margin:0 0 10px 0; font-size:14px;">
+            Understand your money in real time. Build better habits without complexity.
+          </p>
+          <p style="font-size:13px; color:#555;">
+            Launching April 1 on Google Play
+          </p>
         </div>
 
         <!-- SourceBrief -->
-        <div style="display:flex; gap:20px; padding:24px; border-radius:16px; background:white; border:1px solid #e8e8e8; box-shadow:0 4px 12px rgba(0,0,0,0.04); align-items:center;">
-          <img src="/sourcebrief.png" style="width:64px; height:64px;" />
-          <div>
-            <strong style="font-size:18px;">SourceBrief</strong><br />
-            <span style="color:#555;">The news, distilled. What matters. What’s true. Nothing extra.</span><br />
+        <div style="
+          padding:20px;
+          border-radius:14px;
+          background:white;
+          border:1px solid #e5e5e5;
+          box-shadow: 0 4px 12px rgba(0,0,0,0.04);
+        ">
+          <img src="/sourcebrief.png" style="width:48px; height:48px;" />
+          <h3 style="margin:10px 0 6px 0;">SourceBrief</h3>
+          <p style="margin:0 0 12px 0; font-size:14px;">
+            The news, distilled. What matters. What’s true. Nothing extra.
+          </p>
 
-            <a href="https://forms.gle/B6rNMNNAnvHzMB2z6" target="_blank"
-              style="display:inline-block; margin-top:8px; padding:8px 14px; background:#f0f0f0; color:#1a1a1a; border:1px solid #ddd;; border-radius:6px; text-decoration:none;">
-              Join Waitlist
-            </a>
-
-          </div>
+          <a href="https://forms.gle/XjRN6g7jAzZqUCVz5" target="_blank" style="
+            display:inline-block;
+            padding:8px 14px;
+            font-size:13px;
+            border:1px solid #ddd;
+            border-radius:6px;
+            text-decoration:none;
+            color:#1a1a1a;
+            background:#fafafa;
+          ">
+            Join Waitlist
+          </a>
         </div>
 
         <!-- ComplianceIQ -->
-        <div style="display:flex; gap:20px; padding:24px; border-radius:16px; background:white; border:1px solid #e8e8e8; box-shadow:0 4px 12px rgba(0,0,0,0.04); align-items:center;">
-          <div style="width:64px; height:64px; display:flex; align-items:center; justify-content:center;">⚖️</div>
-          <div>
-            <strong style="font-size:18px;">ComplianceIQ</strong><br />
-            <span style="color:#555;">Stay ahead of compliance without drowning in updates.</span><br />
-            <em>Coming soon</em>
-          </div>
+        <div style="
+          padding:20px;
+          border-radius:14px;
+          background:white;
+          border:1px solid #e5e5e5;
+          box-shadow: 0 4px 12px rgba(0,0,0,0.04);
+        ">
+          <img src="/complianceiq.png" style="width:48px; height:48px;" />
+          <h3 style="margin:10px 0 6px 0;">ComplianceIQ</h3>
+          <p style="margin:0 0 10px 0; font-size:14px;">
+            Stay ahead of compliance without drowning in updates.
+          </p>
+          <p style="font-size:13px; color:#777;">Coming soon</p>
         </div>
 
       </div>
 
-      <!-- FOOTER -->
-      <p style="margin-top:50px; color:#666;">
+      <p style="margin-top:40px; color:#555;">
         Clarity first. Direction next.
       </p>
 
     </main>
-
   </body>
 </html>
