@@ -53,107 +53,96 @@
         </p>
       </div>
 
-      <!-- CONNECTOR LINE (subtle system feel) -->
-      <div style="
-        height:1px;
-        background:linear-gradient(to right, transparent, #ddd, transparent);
-        margin:40px 0 60px;
-      "></div>
+ <div style="
+  position:relative;
+  display:grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap:40px;
+  margin-top:60px;
+">
 
-      <!-- GRID -->
-      <div style="
-        display:grid;
-        grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-        gap:28px;
-      ">
+  <!-- subtle connection lines -->
+  <div style="
+    position:absolute;
+    inset:0;
+    background:
+      linear-gradient(#eaeaea 1px, transparent 1px),
+      linear-gradient(90deg, #eaeaea 1px, transparent 1px);
+    background-size: 120px 120px;
+    opacity:0.25;
+    z-index:0;
+  "></div>
 
-        <!-- FounderRoutes -->
-        <div style="
-          padding:24px;
-          border-radius:16px;
-          background:white;
-          border:1px solid #e5e5e5;
-          transition:all .2s ease;
-        ">
-          <img src="/founderroutes.png" style="width:52px;" />
-          <h3>FounderRoutes</h3>
-          <p>
-            Build your business with clarity. Know what to do now—and what not to do.
-          </p>
-          <a href="#" target="_blank">Visit →</a>
-        </div>
+  <!-- FounderRoutes (top left) -->
+  <div style="
+    position:relative;
+    z-index:1;
+    padding:24px;
+    border-radius:16px;
+    background:white;
+    border:1px solid #e5e5e5;
+    transform:translateY(-20px);
+  ">
+    <img src="/founderroutes.png" style="width:52px;" />
+    <h3>FounderRoutes</h3>
+    <p>Build your business with clarity. Know what to do now—and what not to do.</p>
+    <a href="#">Visit →</a>
+  </div>
 
-        <!-- SpendScore -->
-        <div style="
-          padding:24px;
-          border-radius:16px;
-          background:white;
-          border:1px solid #e5e5e5;
-        ">
-          <img src="/spendscore.png" style="width:52px;" />
-          <h3>SpendScore</h3>
-          <p>
-            Understand your money in real time. Build better habits without complexity.
-          </p>
-          <p style="font-size:13px; color:#666;">
-            Launching April 1 on Google Play
-          </p>
-        </div>
+  <!-- SpendScore (top right) -->
+  <div style="
+    position:relative;
+    z-index:1;
+    padding:24px;
+    border-radius:16px;
+    background:white;
+    border:1px solid #e5e5e5;
+    transform:translateY(20px);
+  ">
+    <img src="/spendscore.png" style="width:52px;" />
+    <h3>SpendScore</h3>
+    <p>Understand your money in real time. Build better habits without complexity.</p>
+    <p style="font-size:13px;color:#666;">Launching April 1</p>
+  </div>
 
-        <!-- SourceBrief -->
-        <div style="
-          padding:24px;
-          border-radius:16px;
-          background:white;
-          border:1px solid #e5e5e5;
-        ">
-          <img src="/sourcebrief.png" style="width:52px;" />
-          <h3>SourceBrief</h3>
-          <p>
-            The news, distilled. What matters. What’s true. Nothing extra.
-          </p>
+  <!-- SourceBrief (bottom left) -->
+  <div style="
+    position:relative;
+    z-index:1;
+    padding:24px;
+    border-radius:16px;
+    background:white;
+    border:1px solid #e5e5e5;
+    transform:translateY(20px);
+  ">
+    <img src="/sourcebrief.png" style="width:52px;" />
+    <h3>SourceBrief</h3>
+    <p>The news, distilled. What matters. What’s true.</p>
+    <a href="YOUR_LINK" target="_blank">Join waitlist →</a>
+  </div>
 
-          <a href="https://forms.gle/ZmfuxiLXw5wnSC257" target="_blank" style="
-            display:inline-block;
-            margin-top:10px;
-            font-size:13px;
-            text-decoration:none;
-            border-bottom:1px solid #999;
-          ">
-            Join waitlist →
-          </a>
-        </div>
+  <!-- ComplianceIQ (bottom right) -->
+  <div style="
+    position:relative;
+    z-index:1;
+    padding:24px;
+    border-radius:16px;
+    background:white;
+    border:1px solid #e5e5e5;
+    transform:translateY(-20px);
+  ">
+    <div style="
+      width:52px;height:52px;
+      display:flex;align-items:center;justify-content:center;
+      background:#fafafa;border-radius:8px;
+    ">⚖️</div>
 
-        <!-- ComplianceIQ (FIXED FALLBACK) -->
-        <div style="
-          padding:24px;
-          border-radius:16px;
-          background:white;
-          border:1px solid #e5e5e5;
-        ">
-          <div style="
-            width:52px;
-            height:52px;
-            display:flex;
-            align-items:center;
-            justify-content:center;
-            background:#fafafa;
-            border-radius:8px;
-            font-size:20px;
-          ">
-            ⚖️
-          </div>
+    <h3>ComplianceIQ</h3>
+    <p>Stay ahead of compliance without drowning in updates.</p>
+    <p style="font-size:13px;color:#777;">Coming soon</p>
+  </div>
 
-          <h3>ComplianceIQ</h3>
-          <p>
-            Stay ahead of compliance without drowning in updates.
-          </p>
-          <p style="font-size:13px; color:#777;">
-            Coming soon
-          </p>
-        </div>
-
-      </div>
+</div>
 
       <!-- FOOT -->
       <p style="
