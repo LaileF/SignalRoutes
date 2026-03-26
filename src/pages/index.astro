@@ -8,66 +8,92 @@ body {
   overflow: hidden;
 }
 
-/* BACKGROUND (soft + not overpowering) */
+/* 🔥 BACKGROUND (FIXED — PREMIUM, NOT LOUD) */
 .bg {
   position: fixed;
   inset: 0;
   z-index: -2;
 
-  background: linear-gradient(135deg, #1b2d3a 0%, #1f6f54 100%);
+  background: #0a1628; /* deep navy = premium + neutral */
 }
 
-/* CIRCUIT (simple + visible) */
+/* SUBTLE CIRCUIT */
 .bg::after {
   content: "";
   position: absolute;
   inset: 0;
   background: url('/circuit.png') center/1400px no-repeat;
-  opacity: 0.15;
+  opacity: 0.12;
+}
+
+/* NAV BAR */
+.nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 70px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 30px;
+  z-index: 10;
+}
+
+.nav img {
+  height: 32px;
+}
+
+.nav a {
+  color: #ccc;
+  font-size: 14px;
+  text-decoration: none;
+  margin-left: 20px;
 }
 
 /* SCENE */
 #scene {
   position: relative;
   height: 100vh;
+  padding-top: 60px;
 }
 
 /* CENTER */
 .hub {
   position: absolute;
-  top: 50%;
+  top: 52%;
   left: 50%;
   transform: translate(-50%, -50%);
 }
 
 .hub-card {
   background: white;
-  padding: 36px;
+  padding: 38px;
   border-radius: 18px;
-  width: 320px;
+  width: 340px;
   text-align: center;
-  box-shadow: 0 20px 60px rgba(0,0,0,0.25);
+  box-shadow: 0 25px 70px rgba(0,0,0,0.35);
 }
 
-/* LIGHT PULSE (SAFE) */
+/* SOFT PULSE */
 .hub-card {
   animation: pulse 4s ease-in-out infinite;
 }
 
 @keyframes pulse {
-  0% { box-shadow: 0 20px 60px rgba(0,0,0,0.25); }
-  50% { box-shadow: 0 25px 80px rgba(34,197,94,0.25); }
-  100% { box-shadow: 0 20px 60px rgba(0,0,0,0.25); }
+  0% { box-shadow: 0 25px 70px rgba(0,0,0,0.35); }
+  50% { box-shadow: 0 30px 90px rgba(100,200,160,0.2); }
+  100% { box-shadow: 0 25px 70px rgba(0,0,0,0.35); }
 }
 
 /* CARDS */
 .card {
   position: absolute;
-  width: 340px;
-  padding: 24px;
+  width: 360px;
+  padding: 26px;
   background: white;
   border-radius: 16px;
-  box-shadow: 0 20px 50px rgba(0,0,0,0.25);
+  box-shadow: 0 25px 60px rgba(0,0,0,0.3);
   transition: transform 0.2s ease;
 }
 
@@ -81,7 +107,7 @@ body {
 .bottom-left  { bottom: 10%; left: 10%; }
 .bottom-right { bottom: 10%; right: 10%; }
 
-/* LOGOS (FIXED + CONSISTENT) */
+/* LOGOS */
 .card img {
   width: 64px;
   height: 64px;
@@ -90,7 +116,7 @@ body {
 }
 
 .hub-card img {
-  width: 72px;
+  width: 70px;
   margin-bottom: 10px;
 }
 
@@ -105,27 +131,36 @@ a {
   text-decoration: none;
 }
 
-/* SMALL HIGHLIGHT */
+/* SMALL TEXT */
 .highlight {
   color: #2563eb;
   font-size: 12px;
 }
 
-/* SIMPLE SIGNAL LINES (SAFE VERSION) */
+/* SIGNAL LINES (clean + subtle) */
 .line {
   position: absolute;
   height: 2px;
-  background: rgba(34,197,94,0.4);
+  background: rgba(120,200,160,0.25);
 }
 
-.line-1 { top: 35%; left: 30%; width: 160px; }
-.line-2 { top: 35%; right: 30%; width: 160px; }
-.line-3 { bottom: 35%; left: 30%; width: 160px; }
-.line-4 { bottom: 35%; right: 30%; width: 160px; }
+.line-1 { top: 36%; left: 32%; width: 160px; }
+.line-2 { top: 36%; right: 32%; width: 160px; }
+.line-3 { bottom: 36%; left: 32%; width: 160px; }
+.line-4 { bottom: 36%; right: 32%; width: 160px; }
 
 </style>
 
 <div class="bg"></div>
+
+<!-- NAV -->
+<div class="nav">
+  <img src="/logo.png" />
+  <div>
+    <a href="#">About</a>
+    <a href="#">Contact</a>
+  </div>
+</div>
 
 <div id="scene">
 
@@ -181,9 +216,9 @@ a {
     </a>
   </div>
 
-  <!-- COMPLIANCE -->
+  <!-- COMPLIANCE (SAFE FALLBACK) -->
   <div class="card bottom-right">
-    <img src="/compliance.png" />
+    <img src="/compliance.png" onerror="this.style.display='none'" />
     <h3>ComplianceIQ</h3>
     <p>
       Stay ahead of compliance without drowning in updates or spreadsheets.
