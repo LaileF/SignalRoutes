@@ -7,7 +7,6 @@ body {
   margin: 0;
   font-family: system-ui, sans-serif;
   overflow: hidden;
-  background: #0f172a;
 }
 
 /* BACKGROUND */
@@ -17,19 +16,19 @@ body {
   z-index: -2;
 
   background:
-    radial-gradient(circle at center, rgba(200,160,60,0.18), transparent 55%),
-    linear-gradient(135deg, #0f172a 0%, #0b3d2e 100%);
+    radial-gradient(circle at center, rgba(200,160,60,0.12), transparent 60%),
+    linear-gradient(135deg, #0b1220 0%, #0f3a2c 100%);
 }
 
-/* CIRCUIT OVERLAY */
+/* CIRCUIT */
 .bg::after {
   content: "";
   position: absolute;
   inset: 0;
 
-  background: url('/circuit.png') center/1400px no-repeat;
-  opacity: 0.18;
-  filter: hue-rotate(140deg) saturate(0.8);
+  background: url('/circuit.png') center/1500px no-repeat;
+  opacity: 0.10;
+  filter: hue-rotate(140deg) brightness(0.7);
 
   z-index: -1;
 }
@@ -38,9 +37,10 @@ body {
 #scene {
   position: relative;
   height: 100vh;
+  transition: transform 0.1s ease-out;
 }
 
-/* CENTER HUB */
+/* HUB */
 .hub {
   position: absolute;
   top: 50%;
@@ -50,43 +50,60 @@ body {
 
 .hub-glow {
   position: absolute;
-  width: 420px;
-  height: 420px;
-  background: radial-gradient(circle, rgba(200,160,60,0.35), transparent);
-  filter: blur(40px);
+  width: 460px;
+  height: 460px;
+  background: radial-gradient(circle, rgba(200,160,60,0.25), transparent);
+  filter: blur(50px);
+  animation: pulse 4s infinite ease-in-out;
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 0.2; transform: scale(0.95); }
+  50% { opacity: 0.35; transform: scale(1.1); }
 }
 
 .hub-card {
   position: relative;
   background: white;
-  padding: 28px;
-  border-radius: 16px;
-  width: 260px;
+  padding: 32px;
+  border-radius: 18px;
+  width: 280px;
   text-align: center;
-  box-shadow: 0 20px 50px rgba(0,0,0,0.2);
-  transform: scale(1.08);
+  box-shadow: 0 25px 60px rgba(0,0,0,0.25);
+  transform: scale(1.12);
+  transition: transform 0.25s ease;
+}
+
+.hub-card:hover {
+  transform: scale(1.15);
 }
 
 /* CARDS */
 .card {
   position: absolute;
-  width: 260px;
-  padding: 18px;
+  width: 300px;
+  padding: 22px;
   background: white;
-  border-radius: 14px;
-  box-shadow: 0 12px 30px rgba(0,0,0,0.15);
+  border-radius: 16px;
+  box-shadow: 0 20px 50px rgba(0,0,0,0.2);
+  transition: all 0.25s ease;
 }
 
-/* CARD POSITIONS (tighter layout) */
-.top-left     { top: 18%; left: 20%; }
-.top-right    { top: 18%; right: 20%; }
-.bottom-left  { bottom: 18%; left: 20%; }
-.bottom-right { bottom: 18%; right: 20%; }
+.card:hover {
+  transform: translateY(-6px) scale(1.03);
+  box-shadow: 0 30px 70px rgba(0,0,0,0.25);
+}
+
+/* POSITIONS */
+.top-left     { top: 20%; left: 22%; }
+.top-right    { top: 20%; right: 22%; }
+.bottom-left  { bottom: 20%; left: 22%; }
+.bottom-right { bottom: 20%; right: 22%; }
 
 /* LOGOS */
 .card img {
-  width: 40px;
-  margin-bottom: 10px;
+  width: 48px;
+  margin-bottom: 12px;
 }
 
 /* TEXT */
@@ -105,6 +122,11 @@ a {
   color: #2563eb;
   text-decoration: none;
 }
+
+/* PARALLAX (subtle mouse move) */
+body:hover #scene {
+  transform: perspective(1000px) rotateX(1deg) rotateY(-1deg);
+}
 </style>
 
 <div class="bg"></div>
@@ -115,7 +137,7 @@ a {
   <div class="hub">
     <div class="hub-glow"></div>
     <div class="hub-card">
-      <img src="/logo.png" width="40" />
+      <img src="/logo.png" width="42" />
       <h3>SignalRoutes</h3>
       <p>Clear signals. Better decisions.</p>
       <p style="font-size:13px;">
@@ -147,7 +169,7 @@ a {
     <img src="/sourcebrief.png" />
     <h3>SourceBrief</h3>
     <p>The news, distilled. What matters.</p>
-    <a href="https://lailef.com/" target="_blank">
+    <a href="https://forms.gle/diLbSQKf6aKchR3w7" target="_blank">
       Join waitlist →
     </a>
   </div>
