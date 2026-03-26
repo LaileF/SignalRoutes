@@ -5,11 +5,13 @@
   "engines": {
     "node": ">=22"
   },
-  "scripts": {
-    "dev": "astro dev",
-    "build": "astro build",
-    "preview": "astro preview --host"
+
+ "scripts": {
+  "dev": "astro dev",
+  "build": "astro build",
+  "preview": "astro preview --host 0.0.0.0 --port $PORT"
   },
+
   "dependencies": {
     "astro": "5.16.9",
     "@astrojs/mdx": "4.3.13",
