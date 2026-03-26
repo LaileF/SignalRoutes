@@ -183,29 +183,39 @@ window.openModal = function(e,type) {
   const data = {
     signal: {
       title: "SignalRoutes",
-      text: "A central intelligence layer connecting all tools.",
-      extra: "This is the system behind everything."
+      text: "SignalRoutes is a connected system of focused tools designed to cut through noise across business, money, news, and compliance.",
+      extra: "Instead of juggling disconnected tools, everything is built to work together—so you always know what matters and what to do next.",
+      cta: "Explore the ecosystem"
     },
+
     founder: {
       title: "FounderRoutes",
-      text: "Business clarity system with tools + direction.",
-      extra: "FounderRoutes@gmail.com",
-      link: "https://founder-routes-app-rep-production.up.railway.app/"
+      text: "A guided system that tells you exactly what to do next in your business—eliminating guesswork and wasted time.",
+      extra: "Best for: new founders, side hustlers, and operators who want clear direction instead of overwhelm.",
+      link: "https://founder-routes-app-rep-production.up.railway.app/",
+      cta: "Explore FounderRoutes →"
     },
+
     spend: {
       title: "SpendScore",
-      text: "Real-time financial awareness + behavior tracking.",
-      extra: "Launching April • Spendscorehelp@gmail.com"
+      text: "A real-time financial awareness tool that helps you understand and improve your money habits.",
+      extra: "See where your money is going, track your behavior, and build better habits without complexity.",
+      cta: "Launching April • Spendscorehelp@gmail.com"
     },
+
     source: {
       title: "SourceBrief",
-      text: "Distilled news built for clarity.",
-      link: "https://forms.gle/diLbSQKf6aKchR3w7"
+      text: "News distilled down to what actually matters—filtered, summarized, and stripped of noise.",
+      extra: "Built for people who want to stay informed without wasting time or sorting through bias.",
+      link: "https://forms.gle/diLbSQKf6aKchR3w7",
+      cta: "Join the waitlist →"
     },
+
     compliance: {
       title: "ComplianceIQ",
-      text: "Compliance without spreadsheets or overwhelm.",
-      extra: "In development"
+      text: "A simplified approach to compliance that removes the overwhelm of constant updates and regulations.",
+      extra: "Designed for business owners who need clarity without spreadsheets and chaos.",
+      cta: "Currently in development"
     }
   };
 
@@ -214,8 +224,8 @@ window.openModal = function(e,type) {
   modal.innerHTML = `
     <h3>${item.title}</h3>
     <p>${item.text}</p>
-    ${item.extra ? `<p>${item.extra}</p>` : ""}
-    ${item.link ? `<a href="${item.link}" target="_blank">Open →</a>` : ""}
+    <p style="margin-top:8px;">${item.extra}</p>
+    ${item.link ? `<a href="${item.link}" target="_blank">${item.cta}</a>` : `<p style="color:#2563eb;margin-top:10px;">${item.cta}</p>`}
     <div class="close" onclick="closeModal()">Close</div>
   `;
 
@@ -223,8 +233,16 @@ window.openModal = function(e,type) {
 
   const rect = e.currentTarget.getBoundingClientRect();
 
+  /* 👇 SMART POSITIONING */
+  if (rect.left > window.innerWidth / 2) {
+    // RIGHT SIDE → open LEFT
+    modal.style.left = (rect.left - 380 - 15) + "px";
+  } else {
+    // LEFT SIDE → open RIGHT
+    modal.style.left = (rect.right + 15) + "px";
+  }
+
   modal.style.top = rect.top + "px";
-  modal.style.left = (rect.right + 15) + "px";
 };
 
 window.closeModal = function() {
