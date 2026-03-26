@@ -8,96 +8,61 @@ body {
   overflow: hidden;
 }
 
-/* BACKGROUND (LIGHTER BLUE) */
+/* 🌤 LIGHTER BACKGROUND */
 .bg {
   position: fixed;
   inset: 0;
   z-index: -2;
 
-  background: linear-gradient(135deg, #0f2236 0%, #133b5c 100%);
+  background: linear-gradient(135deg, #12263a 0%, #1f4e6b 100%);
 }
 
-/* CIRCUIT */
+/* CIRCUIT — CLEAR BUT SOFT */
 .bg::after {
   content: "";
   position: absolute;
   inset: 0;
   background: url('/circuit.png') center/1400px no-repeat;
-  opacity: 0.18;
-}
-
-/* NAV FIX (CENTERED LOGO) */
-.nav {
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  height: 70px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  z-index: 10;
-}
-
-.nav img {
-  height: 34px;
-}
-
-.nav a {
-  color: #ccc;
-  font-size: 14px;
-  text-decoration: none;
-  margin-left: 20px;
+  opacity: 0.22;
 }
 
 /* SCENE */
 #scene {
   position: relative;
   height: 100vh;
-  padding-top: 60px;
 }
 
 /* CENTER */
 .hub {
   position: absolute;
-  top: 52%;
+  top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
 }
 
 .hub-card {
   background: white;
-  padding: 38px;
+  padding: 36px;
   border-radius: 18px;
   width: 340px;
   text-align: center;
-  box-shadow: 0 25px 70px rgba(0,0,0,0.35);
+  box-shadow: 0 25px 70px rgba(0,0,0,0.25);
 }
 
-/* SOFT PULSE */
-.hub-card {
-  animation: pulse 4s ease-in-out infinite;
-}
-
-@keyframes pulse {
-  0% { box-shadow: 0 25px 70px rgba(0,0,0,0.35); }
-  50% { box-shadow: 0 30px 90px rgba(100,200,160,0.2); }
-  100% { box-shadow: 0 25px 70px rgba(0,0,0,0.35); }
-}
-
-/* CARDS */
+/* CARDS (CLICKABLE NOW) */
 .card {
   position: absolute;
   width: 360px;
   padding: 26px;
   background: white;
   border-radius: 16px;
-  box-shadow: 0 25px 60px rgba(0,0,0,0.3);
-  transition: transform 0.2s ease;
+  box-shadow: 0 25px 60px rgba(0,0,0,0.25);
+  cursor: pointer;
+  transition: all 0.2s ease;
 }
 
 .card:hover {
-  transform: translateY(-6px);
+  transform: translateY(-6px) scale(1.02);
 }
 
 /* POSITIONS */
@@ -106,123 +71,149 @@ body {
 .bottom-left  { bottom: 10%; left: 10%; }
 .bottom-right { bottom: 10%; right: 10%; }
 
-/* LOGO FIX (FORCES VISUAL SIZE EVEN IF FILE IS BAD) */
-.card img {
-  width: 64px;
-  height: 64px;
-  object-fit: contain;
-  transform: scale(1.4); /* 👈 makes small logos LOOK correct */
+/* LOGO NORMALIZATION */
+.logo-wrap {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 70px;
+  margin-bottom: 10px;
 }
 
-.hub-card img {
-  width: 72px;
-  transform: scale(1.2);
+.logo-wrap img {
+  max-height: 60px;
+  max-width: 100%;
+  object-fit: contain;
 }
 
 /* TEXT */
 h3 { margin: 6px 0; }
 p { font-size: 14px; color: #444; }
 
-/* LINKS */
-a {
-  font-size: 14px;
-  color: #2563eb;
-  text-decoration: none;
+/* MODAL */
+.modal {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.6);
+  display: none;
+  align-items: center;
+  justify-content: center;
+  z-index: 20;
 }
 
-/* SMALL TEXT */
-.highlight {
-  color: #2563eb;
-  font-size: 12px;
+.modal-content {
+  background: white;
+  padding: 30px;
+  border-radius: 16px;
+  width: 400px;
+  text-align: center;
 }
 
-/* SIGNAL LINES (clean + subtle) */
-.line {
-  position: absolute;
-  height: 2px;
-  background: rgba(120,200,160,0.25);
+.modal button {
+  margin-top: 20px;
+  padding: 8px 16px;
+  border: none;
+  background: #2563eb;
+  color: white;
+  border-radius: 6px;
 }
-
-.line-1 { top: 36%; left: 32%; width: 160px; }
-.line-2 { top: 36%; right: 32%; width: 160px; }
-.line-3 { bottom: 36%; left: 32%; width: 160px; }
-.line-4 { bottom: 36%; right: 32%; width: 160px; }
 
 </style>
 
 <div class="bg"></div>
 
-<!-- NAV -->
-<div class="nav">
-  <img src="/logo.png" />
-  <div>
-    <a href="#">About</a>
-    <a href="#">Contact</a>
-  </div>
-</div>
-
 <div id="scene">
-
-  <!-- LINES -->
-  <div class="line line-1"></div>
-  <div class="line line-2"></div>
-  <div class="line line-3"></div>
-  <div class="line line-4"></div>
 
   <!-- CENTER -->
   <div class="hub">
     <div class="hub-card">
-      <img src="/logo.png" />
+      <div class="logo-wrap">
+        <img src="/logo.png" />
+      </div>
       <h3>SignalRoutes</h3>
       <p>Clear signals. Better decisions.</p>
       <p style="font-size:13px;">
-        Apps designed to cut through noise across money, business, news, and compliance—so you always know what matters and what to do next.
+        Apps designed to cut through noise across money, business, news, and compliance.
       </p>
     </div>
   </div>
 
-  <!-- FOUNDERROUTES -->
-  <div class="card top-left">
-    <img src="/founderroutes.png" />
+  <!-- CARDS -->
+  <div class="card top-left" onclick="openModal('founder')">
+    <div class="logo-wrap"><img src="/founderroutes.png" /></div>
     <h3>FounderRoutes</h3>
-    <p>
-      Build your business with direction—not guesswork. Know what to do now—and what not to do.
-    </p>
-    <a href="https://founder-routes-app-rep-production.up.railway.app/" target="_blank">
-      Visit →
-    </a>
+    <p>Build your business with direction—not guesswork.</p>
   </div>
 
-  <!-- SPENDSCORE -->
-  <div class="card top-right">
-    <img src="/spendscore.png" />
+  <div class="card top-right" onclick="openModal('spend')">
+    <div class="logo-wrap"><img src="/spendscore.png" /></div>
     <h3>SpendScore</h3>
-    <p>
-      Understand your money in real time and track your score. Build better habits without complexity.
-    </p>
-    <p class="highlight">Launching April 1</p>
+    <p>Understand your money in real time.</p>
   </div>
 
-  <!-- SOURCEBRIEF -->
-  <div class="card bottom-left">
-    <img src="/sourcebrief.png" />
+  <div class="card bottom-left" onclick="openModal('source')">
+    <div class="logo-wrap"><img src="/sourcebrief.png" /></div>
     <h3>SourceBrief</h3>
-    <p>
-      The news, distilled. What matters to you. What’s true. Nothing extra.
-    </p>
-    <a href="https://forms.gle/diLbSQKf6aKchR3w7" target="_blank">
-      Join waitlist →
-    </a>
+    <p>The news, distilled.</p>
   </div>
 
-  <!-- COMPLIANCE (SAFE FALLBACK) -->
-  <div class="card bottom-right">
-    <img src="/compliance.png" onerror="this.style.display='none'" />
+  <div class="card bottom-right" onclick="openModal('compliance')">
+    <div class="logo-wrap"><img src="/compliance.png" /></div>
     <h3>ComplianceIQ</h3>
-    <p>
-      Stay ahead of compliance without drowning in updates or spreadsheets.
-    </p>
-    <p style="font-size:12px;">Coming soon</p>
+    <p>Stay ahead of compliance.</p>
   </div>
 
 </div>
+
+<!-- MODAL -->
+<div class="modal" id="modal">
+  <div class="modal-content" id="modal-content">
+    <h3>Coming Soon</h3>
+    <p>Details here</p>
+    <button onclick="closeModal()">Close</button>
+  </div>
+</div>
+
+<script>
+function openModal(type) {
+  const modal = document.getElementById('modal');
+  const content = document.getElementById('modal-content');
+
+  const data = {
+    founder: {
+      title: "FounderRoutes",
+      text: "Build your business with clarity.",
+      link: "https://founder-routes-app-rep-production.up.railway.app/"
+    },
+    spend: {
+      title: "SpendScore",
+      text: "Track and improve your financial habits."
+    },
+    source: {
+      title: "SourceBrief",
+      text: "Smart news summaries tailored to you.",
+      link: "https://forms.gle/diLbSQKf6aKchR3w7"
+    },
+    compliance: {
+      title: "ComplianceIQ",
+      text: "Compliance made simple. Coming soon."
+    }
+  };
+
+  const item = data[type];
+
+  content.innerHTML = `
+    <h3>${item.title}</h3>
+    <p>${item.text}</p>
+    ${item.link ? `<a href="${item.link}" target="_blank">Open →</a>` : ""}
+    <br/><br/>
+    <button onclick="closeModal()">Close</button>
+  `;
+
+  modal.style.display = 'flex';
+}
+
+function closeModal() {
+  document.getElementById('modal').style.display = 'none';
+}
+</script>
