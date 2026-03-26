@@ -37,46 +37,28 @@
   <!-- CIRCUIT SYSTEM -->
   <svg class="lines" viewBox="0 0 1400 800">
 
-  <!-- CIRCUIT PATHS -->
-  <path id="p1" d="M700 400 C500 300 400 200 200 120" />
-  <path id="p2" d="M700 400 C900 300 1000 200 1200 120" />
-  <path id="p3" d="M700 400 C500 500 400 600 200 700" />
-  <path id="p4" d="M700 400 C900 500 1000 600 1200 700" />
+  <!-- ROUTES (go around hub, not through it) -->
+  <path id="p1" d="M650 350 L500 250 L200 120" />
+  <path id="p2" d="M750 350 L900 250 L1200 120" />
+  <path id="p3" d="M650 450 L500 550 L200 700" />
+  <path id="p4" d="M750 450 L900 550 L1200 700" />
 
-  <!-- BRANCHES (this is what makes it feel REAL) -->
-  <path d="M500 300 L450 250 L420 250" />
-  <path d="M900 300 L950 250 L980 250" />
-  <path d="M500 500 L450 550 L420 550" />
-  <path d="M900 500 L950 550 L980 550" />
+  <!-- RIGHT-ANGLE BRANCHES (this adds realism) -->
+  <path d="M500 250 L500 200 L450 200" />
+  <path d="M900 250 L900 200 L950 200" />
+  <path d="M500 550 L500 600 L450 600" />
+  <path d="M900 550 L900 600 L950 600" />
 
-  <!-- ENDPOINT NODES -->
-  <circle cx="200" cy="120" r="4" class="node"/>
-  <circle cx="1200" cy="120" r="4" class="node"/>
-  <circle cx="200" cy="700" r="4" class="node"/>
-  <circle cx="1200" cy="700" r="4" class="node"/>
+  <!-- ENDPOINT NODES ONLY -->
+  <circle cx="200" cy="120" r="3" class="node"/>
+  <circle cx="1200" cy="120" r="3" class="node"/>
+  <circle cx="200" cy="700" r="3" class="node"/>
+  <circle cx="1200" cy="700" r="3" class="node"/>
 
-  <!-- SIGNAL PULSES -->
-  <circle r="4" class="pulse">
-    <animateMotion dur="2s" repeatCount="indefinite">
+  <!-- SIGNAL (clean, not cluttered) -->
+  <circle r="3" class="pulse">
+    <animateMotion dur="3s" repeatCount="indefinite">
       <mpath href="#p1"/>
-    </animateMotion>
-  </circle>
-
-  <circle r="4" class="pulse">
-    <animateMotion dur="2.4s" repeatCount="indefinite">
-      <mpath href="#p2"/>
-    </animateMotion>
-  </circle>
-
-  <circle r="4" class="pulse">
-    <animateMotion dur="2.8s" repeatCount="indefinite">
-      <mpath href="#p3"/>
-    </animateMotion>
-  </circle>
-
-  <circle r="4" class="pulse">
-    <animateMotion dur="3.2s" repeatCount="indefinite">
-      <mpath href="#p4"/>
     </animateMotion>
   </circle>
 
@@ -177,23 +159,20 @@
 
 .lines path {
   fill:none;
-  stroke:rgba(34,197,94,0.35);
+  stroke:rgba(34,197,94,0.22); /* 👈 softer */
   stroke-width:1.5;
   stroke-linecap:round;
 }
 
 .node {
   fill:#22c55e;
+  opacity:0.7;
+  filter: drop-shadow(0 0 4px #22c55e);
+}
+
+.pulse {
+  fill:#22c55e;
   filter: drop-shadow(0 0 6px #22c55e);
-}
-
-.pulse {
-  fill:#22c55e;
-  filter: drop-shadow(0 0 8px #22c55e);
-}
-
-.pulse {
-  fill:#22c55e;
 }
 
 /* CARDS */
