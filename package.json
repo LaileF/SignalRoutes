@@ -5,17 +5,16 @@
   "engines": {
     "node": ">=22"
   },
-
- "scripts": {
-  "dev": "astro dev",
-  "build": "astro build",
-  "preview": "astro preview --host 0.0.0.0 --port $PORT"
+  "scripts": {
+    "dev": "astro dev",
+    "build": "astro build",
+    "start": "serve dist -l $PORT"
   },
-
   "dependencies": {
     "astro": "5.16.9",
     "@astrojs/mdx": "4.3.13",
     "@astrojs/sitemap": "3.6.1",
+    "serve": "^14.2.6",
     "typescript": "5.9.3"
   }
 }
