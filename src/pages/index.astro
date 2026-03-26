@@ -2,33 +2,32 @@
 ---
 
 <style>
-/* BASE */
 body {
   margin: 0;
   font-family: system-ui, sans-serif;
   overflow: hidden;
 }
 
-/* BACKGROUND */
+/* BACKGROUND (lighter + cleaner) */
 .bg {
   position: fixed;
   inset: 0;
   z-index: -2;
 
   background:
-    radial-gradient(circle at center, rgba(200,160,60,0.12), transparent 60%),
-    linear-gradient(135deg, #0b1220 0%, #0f3a2c 100%);
+    radial-gradient(circle at center, rgba(200,160,60,0.18), transparent 60%),
+    linear-gradient(135deg, #0c1f2e 0%, #134e3a 100%);
 }
 
-/* CIRCUIT */
+/* CIRCUIT (VISIBLE AGAIN) */
 .bg::after {
   content: "";
   position: absolute;
   inset: 0;
 
-  background: url('/circuit.png') center/1500px no-repeat;
-  opacity: 0.10;
-  filter: hue-rotate(140deg) brightness(0.7);
+  background: url('/circuit.png') center/1400px no-repeat;
+  opacity: 0.18; /* ← key fix */
+  filter: hue-rotate(140deg);
 
   z-index: -1;
 }
@@ -37,7 +36,7 @@ body {
 #scene {
   position: relative;
   height: 100vh;
-  transition: transform 0.1s ease-out;
+  transition: transform 0.08s ease-out;
 }
 
 /* HUB */
@@ -50,82 +49,64 @@ body {
 
 .hub-glow {
   position: absolute;
-  width: 460px;
-  height: 460px;
+  width: 480px;
+  height: 480px;
   background: radial-gradient(circle, rgba(200,160,60,0.25), transparent);
-  filter: blur(50px);
+  filter: blur(40px);
   animation: pulse 4s infinite ease-in-out;
 }
 
 @keyframes pulse {
-  0%, 100% { opacity: 0.2; transform: scale(0.95); }
-  50% { opacity: 0.35; transform: scale(1.1); }
+  0%,100% { opacity: 0.25; }
+  50% { opacity: 0.4; }
 }
 
 .hub-card {
   position: relative;
   background: white;
-  padding: 32px;
+  padding: 36px;
   border-radius: 18px;
-  width: 280px;
+  width: 300px;
   text-align: center;
   box-shadow: 0 25px 60px rgba(0,0,0,0.25);
-  transform: scale(1.12);
-  transition: transform 0.25s ease;
 }
 
-.hub-card:hover {
-  transform: scale(1.15);
-}
-
-/* CARDS */
+/* CARDS (ACTUALLY BIGGER NOW) */
 .card {
   position: absolute;
-  width: 300px;
-  padding: 22px;
+  width: 340px;   /* 👈 bigger */
+  padding: 26px;
   background: white;
   border-radius: 16px;
-  box-shadow: 0 20px 50px rgba(0,0,0,0.2);
-  transition: all 0.25s ease;
+  box-shadow: 0 25px 60px rgba(0,0,0,0.25);
+  transition: all 0.2s ease;
 }
 
 .card:hover {
-  transform: translateY(-6px) scale(1.03);
-  box-shadow: 0 30px 70px rgba(0,0,0,0.25);
+  transform: translateY(-6px);
 }
 
-/* POSITIONS */
-.top-left     { top: 20%; left: 22%; }
-.top-right    { top: 20%; right: 22%; }
-.bottom-left  { bottom: 20%; left: 22%; }
-.bottom-right { bottom: 20%; right: 22%; }
+/* POSITIONS (closer in) */
+.top-left     { top: 22%; left: 26%; }
+.top-right    { top: 22%; right: 26%; }
+.bottom-left  { bottom: 22%; left: 26%; }
+.bottom-right { bottom: 22%; right: 26%; }
 
-/* LOGOS */
+/* LOGOS (FIX SIZE) */
 .card img {
-  width: 48px;
-  margin-bottom: 12px;
+  width: 56px;
+  margin-bottom: 14px;
 }
 
 /* TEXT */
-h3 {
-  margin: 6px 0;
-}
-
-p {
-  font-size: 14px;
-  color: #555;
-}
+h3 { margin: 6px 0; }
+p  { font-size: 14px; color: #444; }
 
 /* LINKS */
 a {
   font-size: 14px;
   color: #2563eb;
   text-decoration: none;
-}
-
-/* PARALLAX (subtle mouse move) */
-body:hover #scene {
-  transform: perspective(1000px) rotateX(1deg) rotateY(-1deg);
 }
 </style>
 
@@ -137,48 +118,56 @@ body:hover #scene {
   <div class="hub">
     <div class="hub-glow"></div>
     <div class="hub-card">
-      <img src="/logo.png" width="42" />
+      <img src="/logo.png" width="48" />
       <h3>SignalRoutes</h3>
       <p>Clear signals. Better decisions.</p>
       <p style="font-size:13px;">
-        A system designed to cut through noise across money, business, news, and compliance.
+        Apps designed to cut through noise across money, business, news, and compliance—so you always know what matters and clairty on what to do next.
       </p>
     </div>
   </div>
 
-  <!-- TOP LEFT -->
+  <!-- FOUNDERROUTES -->
   <div class="card top-left">
     <img src="/founderroutes.png" />
     <h3>FounderRoutes</h3>
-    <p>Build your business with clarity.</p>
+    <p>
+      Build your business with clarity, custom downloads and an assitant that grows with you. Know what to do now—and what not to do.
+    </p>
     <a href="https://founder-routes-app-rep-production.up.railway.app/" target="_blank">
       Visit →
     </a>
   </div>
 
-  <!-- TOP RIGHT -->
+  <!-- SPENDSCORE -->
   <div class="card top-right">
     <img src="/spendscore.png" />
     <h3>SpendScore</h3>
-    <p>Understand your money in real time.</p>
+    <p>
+      Understand your money in real time, track you score. Build better habits without complexity.
+    </p>
     <p style="font-size:12px;">Launching April 1</p>
   </div>
 
-  <!-- BOTTOM LEFT -->
+  <!-- SOURCEBRIEF -->
   <div class="card bottom-left">
     <img src="/sourcebrief.png" />
     <h3>SourceBrief</h3>
-    <p>The news, distilled. What matters.</p>
+    <p>
+      The news, distilled. What matters to you. What’s true. Nothing extra.
+    </p>
     <a href="https://forms.gle/diLbSQKf6aKchR3w7" target="_blank">
       Join waitlist →
     </a>
   </div>
 
-  <!-- BOTTOM RIGHT -->
+  <!-- COMPLIANCE -->
   <div class="card bottom-right">
-    <img src="/logo.png" />
+    <img src="/compliance.png" /> <!-- 👈 FIX THIS FILE NAME -->
     <h3>ComplianceIQ</h3>
-    <p>Stay ahead of compliance without overwhelm.</p>
+    <p>
+      Stay ahead of compliance without drowning in updates or spreadsheets.
+    </p>
     <p style="font-size:12px;">Coming soon</p>
   </div>
 
