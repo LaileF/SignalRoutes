@@ -35,29 +35,52 @@
   </div>
 
   <!-- CIRCUIT SYSTEM -->
-  <svg class="lines">
+  <svg class="lines" viewBox="0 0 1400 800">
 
-    <!-- BRANCHING PATHS -->
-    <path id="p1" d="M700 400 Q500 250 200 120" />
-    <path id="p2" d="M700 400 Q900 250 1200 120" />
-    <path id="p3" d="M700 400 Q500 550 200 700" />
-    <path id="p4" d="M700 400 Q900 550 1200 700" />
+  <!-- CIRCUIT PATHS -->
+  <path id="p1" d="M700 400 C500 300 400 200 200 120" />
+  <path id="p2" d="M700 400 C900 300 1000 200 1200 120" />
+  <path id="p3" d="M700 400 C500 500 400 600 200 700" />
+  <path id="p4" d="M700 400 C900 500 1000 600 1200 700" />
 
-    <!-- SIGNAL PULSES -->
-    <circle r="4" class="pulse">
-      <animateMotion dur="2s" repeatCount="indefinite"><mpath href="#p1"/></animateMotion>
-    </circle>
-    <circle r="4" class="pulse">
-      <animateMotion dur="2.4s" repeatCount="indefinite"><mpath href="#p2"/></animateMotion>
-    </circle>
-    <circle r="4" class="pulse">
-      <animateMotion dur="2.8s" repeatCount="indefinite"><mpath href="#p3"/></animateMotion>
-    </circle>
-    <circle r="4" class="pulse">
-      <animateMotion dur="3.2s" repeatCount="indefinite"><mpath href="#p4"/></animateMotion>
-    </circle>
+  <!-- BRANCHES (this is what makes it feel REAL) -->
+  <path d="M500 300 L450 250 L420 250" />
+  <path d="M900 300 L950 250 L980 250" />
+  <path d="M500 500 L450 550 L420 550" />
+  <path d="M900 500 L950 550 L980 550" />
 
-  </svg>
+  <!-- ENDPOINT NODES -->
+  <circle cx="200" cy="120" r="4" class="node"/>
+  <circle cx="1200" cy="120" r="4" class="node"/>
+  <circle cx="200" cy="700" r="4" class="node"/>
+  <circle cx="1200" cy="700" r="4" class="node"/>
+
+  <!-- SIGNAL PULSES -->
+  <circle r="4" class="pulse">
+    <animateMotion dur="2s" repeatCount="indefinite">
+      <mpath href="#p1"/>
+    </animateMotion>
+  </circle>
+
+  <circle r="4" class="pulse">
+    <animateMotion dur="2.4s" repeatCount="indefinite">
+      <mpath href="#p2"/>
+    </animateMotion>
+  </circle>
+
+  <circle r="4" class="pulse">
+    <animateMotion dur="2.8s" repeatCount="indefinite">
+      <mpath href="#p3"/>
+    </animateMotion>
+  </circle>
+
+  <circle r="4" class="pulse">
+    <animateMotion dur="3.2s" repeatCount="indefinite">
+      <mpath href="#p4"/>
+    </animateMotion>
+  </circle>
+
+</svg>
 
   <!-- CARDS -->
 
@@ -104,9 +127,9 @@
   position:fixed;
   inset:0;
   background:
-    radial-gradient(circle at center, rgba(180,140,40,0.18), transparent 60%),
-    repeating-linear-gradient(0deg, rgba(34,197,94,0.12) 0 2px, transparent 2px 120px),
-    repeating-linear-gradient(90deg, rgba(34,197,94,0.12) 0 2px, transparent 2px 120px);
+    radial-gradient(circle at center, rgba(180,140,40,0.18), transparent 65%),
+    radial-gradient(circle at 20% 20%, rgba(34,197,94,0.08), transparent 40%),
+    radial-gradient(circle at 80% 80%, rgba(34,197,94,0.08), transparent 40%);
 }
 
 /* MAIN */
@@ -154,8 +177,19 @@
 
 .lines path {
   fill:none;
-  stroke:rgba(34,197,94,0.5);
-  stroke-width:2;
+  stroke:rgba(34,197,94,0.35);
+  stroke-width:1.5;
+  stroke-linecap:round;
+}
+
+.node {
+  fill:#22c55e;
+  filter: drop-shadow(0 0 6px #22c55e);
+}
+
+.pulse {
+  fill:#22c55e;
+  filter: drop-shadow(0 0 8px #22c55e);
 }
 
 .pulse {
