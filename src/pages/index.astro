@@ -15,8 +15,8 @@ body {
   z-index: -2;
 
   background:
-    radial-gradient(circle at center, rgba(200,160,60,0.12), transparent 65%),
-    linear-gradient(135deg, #12263a 0%, #1f6f54 100%);
+    radial-gradient(circle at center, rgba(200,160,60,0.08), transparent 70%),
+    linear-gradient(135deg, #152b3a 0%, #1c7c5a 100%);
 }
 
 /* CIRCUIT (VISIBLE BUT SOFT) */
@@ -25,9 +25,9 @@ body {
   position: absolute;
   inset: 0;
 
-  background: url('/circuit.png') center/1600px no-repeat;
-  opacity: 0.22;
-  filter: hue-rotate(140deg) contrast(0.9);
+  background: url('/circuit.png') center/1500px no-repeat;
+  opacity: 0.25; /* 👈 stronger so you can SEE it */
+  filter: hue-rotate(140deg) brightness(1.1);
 
   z-index: -1;
 }
@@ -46,18 +46,15 @@ body {
   transform: translate(-50%, -50%);
 }
 
+/* CENTER ENERGY PULSE */
 .hub-glow {
-  position: absolute;
-  width: 520px;
-  height: 520px;
-  background: radial-gradient(circle, rgba(200,160,60,0.25), transparent);
-  filter: blur(45px);
-  animation: pulse 4s infinite ease-in-out;
+  animation: pulse 3s infinite ease-in-out;
 }
 
 @keyframes pulse {
-  0%,100% { opacity: 0.25; }
-  50% { opacity: 0.4; }
+  0% { opacity: 0.2; transform: scale(0.9); }
+  50% { opacity: 0.45; transform: scale(1.15); }
+  100% { opacity: 0.2; transform: scale(0.9); }
 }
 
 .hub-card {
@@ -93,14 +90,16 @@ body {
 
 /* LOGOS */
 .card img {
-  width: 60px;
+  width: 64px;
+  height: 64px;
+  object-fit: contain;
   margin-bottom: 14px;
 }
 
 /* CENTER LOGO FIX */
 .hub-card img {
-  width: 60px;
-  margin-bottom: 12px;
+  width: 72px;
+  height: 72px;
 }
 
 /* TEXT */
@@ -125,14 +124,14 @@ a {
   position: absolute;
   height: 2px;
   background: linear-gradient(to right, transparent, #22c55e, transparent);
-  opacity: 0.25;
-  animation: flow 4s linear infinite;
+  opacity: 0.4;
+  animation: flow 3s linear infinite;
 }
 
 @keyframes flow {
-  0% { transform: scaleX(0.2); opacity: 0.1; }
-  50% { transform: scaleX(1); opacity: 0.3; }
-  100% { transform: scaleX(0.2); opacity: 0.1; }
+  0% { transform: scaleX(0.3); opacity: 0.1; }
+  50% { transform: scaleX(1); opacity: 0.5; }
+  100% { transform: scaleX(0.3); opacity: 0.1; }
 }
 
 /* POSITION LINES */
@@ -185,7 +184,10 @@ a {
     <p>
       Understand your money in real time, track you score. Build better habits without complexity.
     </p>
-    <p class="highlight">Launching April 1</p>
+    .highlight {
+    color: #2563eb;
+    font-size: 12px;
+}
   </div>
 
   <!-- SOURCEBRIEF -->
@@ -202,7 +204,7 @@ a {
 
   <!-- COMPLIANCE -->
   <div class="card bottom-right">
-    <img src="/compliance.png" />
+    <img src="/compliance.png" style="transform: scale(2);" />
     <h3>ComplianceIQ</h3>
     <p>
       Stay ahead of compliance without drowning in updates or spreadsheets.
