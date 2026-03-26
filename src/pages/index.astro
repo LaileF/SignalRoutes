@@ -70,40 +70,49 @@ body {
   overflow:hidden;
 }
 
-/* BACKGROUND */
+/* BACKGROUND BASE */
 .bg {
   position:fixed;
   inset:0;
   background:
     radial-gradient(circle at center, rgba(180,140,40,0.18), transparent 65%),
+    linear-gradient(rgba(34,197,94,0.12) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(34,197,94,0.12) 1px, transparent 1px),
     #f4f2ee;
+
+  background-size:
+    100% 100%,
+    140px 140px,
+    140px 140px,
+    100% 100%;
 }
 
-/* CIRCUIT LAYER */
+/* CIRCUIT DETAIL LAYER */
 .bg::after {
   content:"";
   position:absolute;
   inset:0;
-  background-image: url("data:image/svg+xml;utf8,
-  <svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1200 800'>
-    <g stroke='%2322c55e' stroke-width='1' fill='none' opacity='0.15'>
 
-      <path d='M0 200 H1200'/>
-      <path d='M0 400 H1200'/>
-      <path d='M0 600 H1200'/>
+  background:
+    linear-gradient(90deg, rgba(34,197,94,0.25) 2px, transparent 2px),
+    linear-gradient(rgba(34,197,94,0.25) 2px, transparent 2px);
 
-      <path d='M300 0 V800'/>
-      <path d='M600 0 V800'/>
-      <path d='M900 0 V800'/>
+  background-size: 180px 180px;
+  mask-image: radial-gradient(circle at center, black 40%, transparent 80%);
+  opacity:0.25;
+}
 
-      <path d='M300 200 L350 200 L350 250'/>
-      <path d='M900 200 L850 200 L850 250'/>
-      <path d='M300 600 L350 600 L350 550'/>
-      <path d='M900 600 L850 600 L850 550'/>
+/* OPTIONAL NODE DOTS */
+.bg::before {
+  content:"";
+  position:absolute;
+  inset:0;
 
-    </g>
-  </svg>");
-  background-size:cover;
+  background:
+    radial-gradient(circle, rgba(34,197,94,0.4) 2px, transparent 3px);
+
+  background-size: 180px 180px;
+  opacity:0.15;
 }
 
 /* FLOATING SIGNAL */
