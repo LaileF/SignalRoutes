@@ -79,19 +79,16 @@ body {
     radial-gradient(circle at center, rgba(180,140,40,0.25), transparent 60%),
     url('/circuit.png');
 
-  background-size:
-    cover,
-    900px;
-
-  background-repeat:
-    no-repeat,
-    repeat;
-
-  background-position:
-    center,
-    center;
-
-  opacity: 1;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 900px; /* 👈 controls size */
+  
+  .bg::after {
+  content:"";
+  position:absolute;
+  inset:0;
+  background:rgba(255,255,255,0.65);
+}
 }
 
 /* SIGNAL FLOW (SUBTLE MOTION) */
