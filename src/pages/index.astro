@@ -81,29 +81,32 @@ body {
 
   background-repeat: no-repeat;
   background-position: center;
-  background-size: 900px; /* 👈 controls size */
-  
-  .bg::after {
-  content:"";
-  position:absolute;
-  inset:0;
-  background:rgba(255,255,255,0.65);
-}
+  background-size: cover; /* 👈 THIS is the key change */
 }
 
 /* SIGNAL FLOW (SUBTLE MOTION) */
 .bg::before {
-  content: "";
-  position: absolute;
-  width: 600px;
-  height: 600px;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
+  content:"";
+  position:absolute;
+  inset:0;
 
-  background: radial-gradient(circle, rgba(34,197,94,0.25), transparent 70%);
-  animation: signalPulse 4s ease-in-out infinite;
-  opacity: 0.25;
+  background:
+    linear-gradient(
+      rgba(40,120,80,0.25),
+      rgba(180,140,40,0.25)
+    );
+
+  mix-blend-mode: multiply;
+
+  .bg::after {
+  content:"";
+  position:absolute;
+  inset:0;
+
+  background:
+    radial-gradient(circle at center, rgba(180,140,40,0.35), transparent 60%);
+
+  pointer-events:none;
 }
 
 @keyframes signalPulse {
