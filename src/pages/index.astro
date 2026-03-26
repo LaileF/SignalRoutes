@@ -8,26 +8,26 @@ body {
   overflow: hidden;
 }
 
-/* BACKGROUND (lighter + cleaner) */
+/* BACKGROUND (FIXED — LIGHTER) */
 .bg {
   position: fixed;
   inset: 0;
   z-index: -2;
 
   background:
-    radial-gradient(circle at center, rgba(200,160,60,0.18), transparent 60%),
-    linear-gradient(135deg, #0c1f2e 0%, #134e3a 100%);
+    radial-gradient(circle at center, rgba(200,160,60,0.12), transparent 65%),
+    linear-gradient(135deg, #12263a 0%, #1f6f54 100%);
 }
 
-/* CIRCUIT (VISIBLE AGAIN) */
+/* CIRCUIT (VISIBLE BUT SOFT) */
 .bg::after {
   content: "";
   position: absolute;
   inset: 0;
 
-  background: url('/circuit.png') center/1400px no-repeat;
-  opacity: 0.18; /* ← key fix */
-  filter: hue-rotate(140deg);
+  background: url('/circuit.png') center/1600px no-repeat;
+  opacity: 0.22;
+  filter: hue-rotate(140deg) contrast(0.9);
 
   z-index: -1;
 }
@@ -36,7 +36,6 @@ body {
 #scene {
   position: relative;
   height: 100vh;
-  transition: transform 0.08s ease-out;
 }
 
 /* HUB */
@@ -49,10 +48,10 @@ body {
 
 .hub-glow {
   position: absolute;
-  width: 480px;
-  height: 480px;
+  width: 520px;
+  height: 520px;
   background: radial-gradient(circle, rgba(200,160,60,0.25), transparent);
-  filter: blur(40px);
+  filter: blur(45px);
   animation: pulse 4s infinite ease-in-out;
 }
 
@@ -64,38 +63,44 @@ body {
 .hub-card {
   position: relative;
   background: white;
-  padding: 36px;
-  border-radius: 18px;
-  width: 300px;
+  padding: 40px;
+  border-radius: 20px;
+  width: 340px;
   text-align: center;
-  box-shadow: 0 25px 60px rgba(0,0,0,0.25);
+  box-shadow: 0 30px 70px rgba(0,0,0,0.3);
 }
 
-/* CARDS (ACTUALLY BIGGER NOW) */
+/* CARDS */
 .card {
   position: absolute;
-  width: 340px;   /* 👈 bigger */
+  width: 360px;
   padding: 26px;
   background: white;
-  border-radius: 16px;
+  border-radius: 18px;
   box-shadow: 0 25px 60px rgba(0,0,0,0.25);
-  transition: all 0.2s ease;
+  transition: all 0.25s ease;
 }
 
 .card:hover {
-  transform: translateY(-6px);
+  transform: translateY(-8px);
 }
 
-/* POSITIONS (closer in) */
-.top-left     { top: 22%; left: 26%; }
-.top-right    { top: 22%; right: 26%; }
-.bottom-left  { bottom: 22%; left: 26%; }
-.bottom-right { bottom: 22%; right: 26%; }
+/* PUSH OUTWARD (MORE SPACE) */
+.top-left     { top: 12%; left: 12%; }
+.top-right    { top: 12%; right: 12%; }
+.bottom-left  { bottom: 12%; left: 12%; }
+.bottom-right { bottom: 12%; right: 12%; }
 
-/* LOGOS (FIX SIZE) */
+/* LOGOS */
 .card img {
-  width: 56px;
+  width: 60px;
   margin-bottom: 14px;
+}
+
+/* CENTER LOGO FIX */
+.hub-card img {
+  width: 60px;
+  margin-bottom: 12px;
 }
 
 /* TEXT */
@@ -108,21 +113,55 @@ a {
   color: #2563eb;
   text-decoration: none;
 }
+
+/* MATCH SPENDSCORE TEXT COLOR */
+.highlight {
+  color: #2563eb;
+  font-size: 12px;
+}
+
+/* ✨ SIGNAL LINES */
+.line {
+  position: absolute;
+  height: 2px;
+  background: linear-gradient(to right, transparent, #22c55e, transparent);
+  opacity: 0.25;
+  animation: flow 4s linear infinite;
+}
+
+@keyframes flow {
+  0% { transform: scaleX(0.2); opacity: 0.1; }
+  50% { transform: scaleX(1); opacity: 0.3; }
+  100% { transform: scaleX(0.2); opacity: 0.1; }
+}
+
+/* POSITION LINES */
+.line-1 { top: 40%; left: 30%; width: 200px; transform-origin: left; }
+.line-2 { top: 40%; right: 30%; width: 200px; transform-origin: right; }
+.line-3 { bottom: 40%; left: 30%; width: 200px; transform-origin: left; }
+.line-4 { bottom: 40%; right: 30%; width: 200px; transform-origin: right; }
+
 </style>
 
 <div class="bg"></div>
 
 <div id="scene">
 
+  <!-- SIGNAL LINES -->
+  <div class="line line-1"></div>
+  <div class="line line-2"></div>
+  <div class="line line-3"></div>
+  <div class="line line-4"></div>
+
   <!-- CENTER -->
   <div class="hub">
     <div class="hub-glow"></div>
     <div class="hub-card">
-      <img src="/logo.png" width="48" />
+      <img src="/logo.png" />
       <h3>SignalRoutes</h3>
       <p>Clear signals. Better decisions.</p>
       <p style="font-size:13px;">
-        Apps designed to cut through noise across money, business, news, and compliance—so you always know what matters and clairty on what to do next.
+        Apps designed to cut through noise across money, business, news, and compliance—so you always know what matters and clarity on what to do next.
       </p>
     </div>
   </div>
@@ -132,7 +171,7 @@ a {
     <img src="/founderroutes.png" />
     <h3>FounderRoutes</h3>
     <p>
-      Build your business with clarity, custom downloads and an assitant that grows with you. Know what to do now—and what not to do.
+      Build Your Business with direction—Not guesswork, custom downloads and an assitant that grows with you. Know what to do now—and what not to do.
     </p>
     <a href="https://founder-routes-app-rep-production.up.railway.app/" target="_blank">
       Visit →
@@ -146,7 +185,7 @@ a {
     <p>
       Understand your money in real time, track you score. Build better habits without complexity.
     </p>
-    <p style="font-size:12px;">Launching April 1</p>
+    <p class="highlight">Launching April 1</p>
   </div>
 
   <!-- SOURCEBRIEF -->
@@ -163,7 +202,7 @@ a {
 
   <!-- COMPLIANCE -->
   <div class="card bottom-right">
-    <img src="/compliance.png" /> <!-- 👈 FIX THIS FILE NAME -->
+    <img src="/compliance.png" />
     <h3>ComplianceIQ</h3>
     <p>
       Stay ahead of compliance without drowning in updates or spreadsheets.
