@@ -6,14 +6,8 @@
   <title>SignalRoutes</title>
 </head>
 
-<body style="
-  font-family: system-ui, sans-serif;
-  margin:0;
-  background:#f4f2ee;
-  overflow:hidden;
-">
+<body>
 
-<!-- BACKGROUND SYSTEM -->
 <div class="bg"></div>
 
 <main id="scene">
@@ -34,49 +28,15 @@
     </div>
   </div>
 
-  <!-- CIRCUIT SYSTEM -->
-  <svg class="lines" viewBox="0 0 1400 800">
-
-  <!-- ROUTES (go around hub, not through it) -->
-  <path id="p1" d="M650 350 L500 250 L200 120" />
-  <path id="p2" d="M750 350 L900 250 L1200 120" />
-  <path id="p3" d="M650 450 L500 550 L200 700" />
-  <path id="p4" d="M750 450 L900 550 L1200 700" />
-
-  <!-- RIGHT-ANGLE BRANCHES (this adds realism) -->
-  <path d="M500 250 L500 200 L450 200" />
-  <path d="M900 250 L900 200 L950 200" />
-  <path d="M500 550 L500 600 L450 600" />
-  <path d="M900 550 L900 600 L950 600" />
-
-  <!-- ENDPOINT NODES ONLY -->
-  <circle cx="200" cy="120" r="3" class="node"/>
-  <circle cx="1200" cy="120" r="3" class="node"/>
-  <circle cx="200" cy="700" r="3" class="node"/>
-  <circle cx="1200" cy="700" r="3" class="node"/>
-
-  <!-- SIGNAL (clean, not cluttered) -->
-  <circle r="3" class="pulse">
-    <animateMotion dur="3s" repeatCount="indefinite">
-      <mpath href="#p1"/>
-    </animateMotion>
-  </circle>
-
-</svg>
-
   <!-- CARDS -->
 
-  <!-- FounderRoutes -->
   <div class="card tl">
     <img src="/founderroutes.png" />
     <h3>FounderRoutes</h3>
     <p>Build your business with clarity. Know what to do now—and what not to do.</p>
-    <a href="https://founder-routes-app-rep-production.up.railway.app/" target="_blank">
-      Visit →
-    </a>
+    <a href="https://founder-routes-app-rep-production.up.railway.app/" target="_blank">Visit →</a>
   </div>
 
-  <!-- SpendScore (FIXED SIZE) -->
   <div class="card tr">
     <img src="/spendscore.png" class="spend" />
     <h3>SpendScore</h3>
@@ -84,7 +44,6 @@
     <span>Launching April 1</span>
   </div>
 
-  <!-- SourceBrief -->
   <div class="card bl">
     <img src="/sourcebrief.png" />
     <h3>SourceBrief</h3>
@@ -92,7 +51,6 @@
     <a href="https://forms.gle/ZmfuxiLXw5wnSC257">Join waitlist →</a>
   </div>
 
-  <!-- ComplianceIQ -->
   <div class="card br">
     <div class="icon">⚖️</div>
     <h3>ComplianceIQ</h3>
@@ -104,21 +62,72 @@
 
 <style>
 
-/* BACKGROUND (GREEN + GOLD SYSTEM) */
+/* BASE */
+body {
+  margin:0;
+  font-family: system-ui, sans-serif;
+  background:#f4f2ee;
+  overflow:hidden;
+}
+
+/* BACKGROUND */
 .bg {
   position:fixed;
   inset:0;
   background:
     radial-gradient(circle at center, rgba(180,140,40,0.18), transparent 65%),
-    radial-gradient(circle at 20% 20%, rgba(34,197,94,0.08), transparent 40%),
-    radial-gradient(circle at 80% 80%, rgba(34,197,94,0.08), transparent 40%);
+    #f4f2ee;
 }
 
-/* MAIN */
+/* CIRCUIT LAYER */
+.bg::after {
+  content:"";
+  position:absolute;
+  inset:0;
+  background-image: url("data:image/svg+xml;utf8,
+  <svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1200 800'>
+    <g stroke='%2322c55e' stroke-width='1' fill='none' opacity='0.15'>
+
+      <path d='M0 200 H1200'/>
+      <path d='M0 400 H1200'/>
+      <path d='M0 600 H1200'/>
+
+      <path d='M300 0 V800'/>
+      <path d='M600 0 V800'/>
+      <path d='M900 0 V800'/>
+
+      <path d='M300 200 L350 200 L350 250'/>
+      <path d='M900 200 L850 200 L850 250'/>
+      <path d='M300 600 L350 600 L350 550'/>
+      <path d='M900 600 L850 600 L850 550'/>
+
+    </g>
+  </svg>");
+  background-size:cover;
+}
+
+/* FLOATING SIGNAL */
+.bg::before {
+  content:"";
+  position:absolute;
+  inset:0;
+  background:
+    radial-gradient(circle, rgba(34,197,94,0.35) 0%, transparent 60%);
+  animation: drift 14s linear infinite;
+  opacity:0.15;
+}
+
+@keyframes drift {
+  0% { transform: translate(-20%, -10%); }
+  50% { transform: translate(20%, 10%); }
+  100% { transform: translate(-20%, -10%); }
+}
+
+/* SCENE */
 #scene {
   position:relative;
   height:100vh;
-  transition:transform 0.1s ease-out;
+  transition: transform 0.08s ease-out;
 }
 
 /* HUB */
@@ -148,31 +157,13 @@
 }
 
 .hub-card img { height:70px; }
+
 .tag { font-weight:600; }
-.desc { font-size:14px; color:#555; }
 
-/* LINES */
-.lines {
-  position:absolute;
-  inset:0;
-}
-
-.lines path {
-  fill:none;
-  stroke:rgba(34,197,94,0.22); /* 👈 softer */
-  stroke-width:1.5;
-  stroke-linecap:round;
-}
-
-.node {
-  fill:#22c55e;
-  opacity:0.7;
-  filter: drop-shadow(0 0 4px #22c55e);
-}
-
-.pulse {
-  fill:#22c55e;
-  filter: drop-shadow(0 0 6px #22c55e);
+.desc {
+  font-size:14px;
+  color:#555;
+  line-height:1.5;
 }
 
 /* CARDS */
@@ -180,37 +171,20 @@
   position:absolute;
   width:360px;
   padding:28px;
-  background:white;
+  background:rgba(255,255,255,0.85);
+  backdrop-filter: blur(6px);
   border-radius:20px;
-  box-shadow:0 15px 50px rgba(0,0,0,0.08);
-  transition:all .3s ease;
+  box-shadow:0 20px 60px rgba(0,0,0,0.08);
+  transition: all .25s ease;
 }
 
-/* ICON SIZES */
 .card img { width:52px; }
-.spend { width:42px; } /* 👈 FIXED SpendScore */
+.spend { width:42px; }
 
-/* NODE GLOW */
-.card::before {
-  content:"";
-  position:absolute;
-  width:10px;
-  height:10px;
-  background:#22c55e;
-  border-radius:50%;
-  top:-6px;
-  right:-6px;
-  box-shadow:0 0 10px #22c55e;
-}
-
-/* HOVER = ACTIVATION */
+/* HOVER */
 .card:hover {
-  transform:translateY(-6px) scale(1.04);
-  box-shadow:0 30px 100px rgba(180,140,40,0.4);
-}
-
-.card:hover::before {
-  box-shadow:0 0 20px #22c55e;
+  transform:translateY(-8px) scale(1.04);
+  box-shadow:0 30px 100px rgba(180,140,40,0.35);
 }
 
 /* POSITIONS */
@@ -233,7 +207,7 @@
 /* ANIMATION */
 @keyframes pulse {
   0% { opacity:0.4; transform:scale(1); }
-  50% { opacity:1; transform:scale(1.2); }
+  50% { opacity:1; transform:scale(1.15); }
   100% { opacity:0.4; transform:scale(1); }
 }
 
@@ -243,8 +217,8 @@
 const scene = document.getElementById("scene");
 
 document.addEventListener("mousemove", (e) => {
-  const x = (e.clientX / window.innerWidth - 0.5) * 12;
-  const y = (e.clientY / window.innerHeight - 0.5) * 12;
+  const x = (e.clientX / window.innerWidth - 0.5) * 10;
+  const y = (e.clientY / window.innerHeight - 0.5) * 10;
   scene.style.transform = `translate(${x}px, ${y}px)`;
 });
 </script>
