@@ -8,13 +8,13 @@ body {
   overflow: hidden;
 }
 
-/* 🌤 LIGHTER BACKGROUND */
+/* LIGHTER BACKGROUND */
 .bg {
   position: fixed;
   inset: 0;
   z-index: -2;
 
-  background: linear-gradient(135deg, #1e3a5a 0%, #2b6f73 100%);
+  background: linear-gradient(135deg, #1e3a5f 0%, #3a6b8a 100%);
 }
 
 /* CIRCUIT — CLEAR */
@@ -24,10 +24,11 @@ body {
   inset: 0;
 
   background: url('/circuit.png') center/1400px no-repeat;
-  opacity: 0.28;
 
-  /* 👇 THIS is the magic */
-  filter: hue-rotate(140deg) brightness(1.2);
+  opacity: 0.45;
+
+  /* 👇 THIS is the key change */
+  filter: hue-rotate(120deg) brightness(1.3) contrast(1.1);
 }
 
 /* SCENE */
@@ -44,6 +45,7 @@ body {
   transform: translate(-50%, -50%);
 }
 
+/* FIXED FLOAT (does NOT break centering) */
 .hub-card {
   animation: float 4s ease-in-out infinite;
 }
