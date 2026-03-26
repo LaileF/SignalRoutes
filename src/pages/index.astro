@@ -13,7 +13,7 @@
   overflow:hidden;
 ">
 
-<!-- BACKGROUND -->
+<!-- BACKGROUND SYSTEM -->
 <div class="bg"></div>
 
 <main id="scene">
@@ -34,57 +34,52 @@
     </div>
   </div>
 
-  <!-- SVG SYSTEM -->
+  <!-- CIRCUIT SYSTEM -->
   <svg class="lines">
 
-    <!-- CURVED CIRCUITS -->
-    <path id="p1" d="M700 400 Q450 200 200 120" />
-    <path id="p2" d="M700 400 Q950 200 1200 120" />
-    <path id="p3" d="M700 400 Q450 600 200 700" />
-    <path id="p4" d="M700 400 Q950 600 1200 700" />
+    <!-- BRANCHING PATHS -->
+    <path id="p1" d="M700 400 Q500 250 200 120" />
+    <path id="p2" d="M700 400 Q900 250 1200 120" />
+    <path id="p3" d="M700 400 Q500 550 200 700" />
+    <path id="p4" d="M700 400 Q900 550 1200 700" />
 
     <!-- SIGNAL PULSES -->
     <circle r="4" class="pulse">
-      <animateMotion dur="2s" repeatCount="indefinite">
-        <mpath href="#p1"/>
-      </animateMotion>
+      <animateMotion dur="2s" repeatCount="indefinite"><mpath href="#p1"/></animateMotion>
     </circle>
-
     <circle r="4" class="pulse">
-      <animateMotion dur="2.4s" repeatCount="indefinite">
-        <mpath href="#p2"/>
-      </animateMotion>
+      <animateMotion dur="2.4s" repeatCount="indefinite"><mpath href="#p2"/></animateMotion>
     </circle>
-
     <circle r="4" class="pulse">
-      <animateMotion dur="2.8s" repeatCount="indefinite">
-        <mpath href="#p3"/>
-      </animateMotion>
+      <animateMotion dur="2.8s" repeatCount="indefinite"><mpath href="#p3"/></animateMotion>
     </circle>
-
     <circle r="4" class="pulse">
-      <animateMotion dur="3.2s" repeatCount="indefinite">
-        <mpath href="#p4"/>
-      </animateMotion>
+      <animateMotion dur="3.2s" repeatCount="indefinite"><mpath href="#p4"/></animateMotion>
     </circle>
 
   </svg>
 
   <!-- CARDS -->
+
+  <!-- FounderRoutes -->
   <div class="card tl">
     <img src="/founderroutes.png" />
     <h3>FounderRoutes</h3>
     <p>Build your business with clarity. Know what to do now—and what not to do.</p>
-    <a href="#">Visit →</a>
+    <a href="https://founder-routes-app-rep-production.up.railway.app/" target="_blank">
+      Visit →
+    </a>
   </div>
 
+  <!-- SpendScore (FIXED SIZE) -->
   <div class="card tr">
-    <img src="/spendscore.png" />
+    <img src="/spendscore.png" class="spend" />
     <h3>SpendScore</h3>
     <p>Understand your money in real time. Build better habits without complexity.</p>
     <span>Launching April 1</span>
   </div>
 
+  <!-- SourceBrief -->
   <div class="card bl">
     <img src="/sourcebrief.png" />
     <h3>SourceBrief</h3>
@@ -92,6 +87,7 @@
     <a href="https://forms.gle/ZmfuxiLXw5wnSC257">Join waitlist →</a>
   </div>
 
+  <!-- ComplianceIQ -->
   <div class="card br">
     <div class="icon">⚖️</div>
     <h3>ComplianceIQ</h3>
@@ -103,20 +99,21 @@
 
 <style>
 
-/* BACKGROUND GRID */
+/* BACKGROUND (GREEN + GOLD SYSTEM) */
 .bg {
   position:fixed;
   inset:0;
   background:
-    radial-gradient(circle at center, rgba(180,140,40,0.15), transparent 60%),
-    repeating-linear-gradient(0deg, rgba(180,140,40,0.08) 0 2px, transparent 2px 120px),
-    repeating-linear-gradient(90deg, rgba(180,140,40,0.08) 0 2px, transparent 2px 120px);
+    radial-gradient(circle at center, rgba(180,140,40,0.18), transparent 60%),
+    repeating-linear-gradient(0deg, rgba(34,197,94,0.12) 0 2px, transparent 2px 120px),
+    repeating-linear-gradient(90deg, rgba(34,197,94,0.12) 0 2px, transparent 2px 120px);
 }
 
 /* MAIN */
 #scene {
   position:relative;
   height:100vh;
+  transition:transform 0.1s ease-out;
 }
 
 /* HUB */
@@ -131,7 +128,7 @@
   position:absolute;
   width:420px;
   height:420px;
-  background:radial-gradient(circle, rgba(180,140,40,0.3), transparent);
+  background:radial-gradient(circle, rgba(180,140,40,0.35), transparent);
   animation:pulse 3s infinite;
 }
 
@@ -157,12 +154,12 @@
 
 .lines path {
   fill:none;
-  stroke:rgba(180,140,40,0.35);
+  stroke:rgba(34,197,94,0.5);
   stroke-width:2;
 }
 
 .pulse {
-  fill:#b48c28;
+  fill:#22c55e;
 }
 
 /* CARDS */
@@ -176,11 +173,31 @@
   transition:all .3s ease;
 }
 
+/* ICON SIZES */
 .card img { width:52px; }
+.spend { width:42px; } /* 👈 FIXED SpendScore */
 
+/* NODE GLOW */
+.card::before {
+  content:"";
+  position:absolute;
+  width:10px;
+  height:10px;
+  background:#22c55e;
+  border-radius:50%;
+  top:-6px;
+  right:-6px;
+  box-shadow:0 0 10px #22c55e;
+}
+
+/* HOVER = ACTIVATION */
 .card:hover {
   transform:translateY(-6px) scale(1.04);
   box-shadow:0 30px 100px rgba(180,140,40,0.4);
+}
+
+.card:hover::before {
+  box-shadow:0 0 20px #22c55e;
 }
 
 /* POSITIONS */
@@ -213,8 +230,8 @@
 const scene = document.getElementById("scene");
 
 document.addEventListener("mousemove", (e) => {
-  const x = (e.clientX / window.innerWidth - 0.5) * 10;
-  const y = (e.clientY / window.innerHeight - 0.5) * 10;
+  const x = (e.clientX / window.innerWidth - 0.5) * 12;
+  const y = (e.clientY / window.innerHeight - 0.5) * 12;
   scene.style.transform = `translate(${x}px, ${y}px)`;
 });
 </script>
