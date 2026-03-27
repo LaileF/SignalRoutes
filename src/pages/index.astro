@@ -7,7 +7,7 @@ body {
   font-family: system-ui, sans-serif;
 }
 
-/* 🔵 BACKGROUND */
+/* BACKGROUND */
 .bg {
   position: fixed;
   inset: 0;
@@ -15,14 +15,14 @@ body {
   background: linear-gradient(135deg, #1e3a5f 0%, #3a6b8a 100%);
 }
 
-/* 🟢 CIRCUIT */
+/* CIRCUIT (USE YOUR GREEN PNG — NO FILTERS) */
 .bg::after {
   content: "";
   position: absolute;
   inset: 0;
   background: url('/circuit.png') center/1400px no-repeat;
   opacity: 0.35;
-  filter: none;
+    filter: #008C4A;
 }
 
 /* SCENE */
@@ -31,7 +31,7 @@ body {
   height: 100vh;
 }
 
-/* HUB */
+/* CENTER */
 .hub {
   position: absolute;
   top: 50%;
@@ -46,14 +46,7 @@ body {
   width: 360px;
   text-align: center;
   box-shadow: 0 30px 80px rgba(0,0,0,0.25);
-  animation: float 4s ease-in-out infinite;
   cursor: pointer;
-}
-
-@keyframes float {
-  0% { transform: translateY(0px); }
-  50% { transform: translateY(-8px); }
-  100% { transform: translateY(0px); }
 }
 
 /* CARDS */
@@ -65,11 +58,11 @@ body {
   border-radius: 16px;
   box-shadow: 0 25px 60px rgba(0,0,0,0.25);
   cursor: pointer;
-  transition: all 0.2s ease;
+  transition: 0.2s ease;
 }
 
 .card:hover {
-  transform: translateY(-6px) scale(1.02);
+  transform: translateY(-6px);
 }
 
 /* POSITIONS */
@@ -89,15 +82,10 @@ body {
 
 .logo-wrap img {
   max-height: 100px;
-  transition: 0.2s ease;
-}
-
-.card:hover .logo-wrap img {
-  transform: scale(1.08);
 }
 
 /* TEXT */
-h3 { margin: 6px 0; font-size: 18px; }
+h3 { margin: 6px 0; }
 p { font-size: 14px; color: #444; }
 
 /* MODAL */
@@ -110,23 +98,26 @@ p { font-size: 14px; color: #444; }
   box-shadow: 0 25px 70px rgba(0,0,0,0.35);
   display: none;
   z-index: 30;
-  transition: all 0.2s ease;
 }
 
 .modal a {
   display: inline-block;
-  margin-top: 10px;
-  color: #2563eb;
+  margin-top: 12px;
+  padding: 10px 16px;
+  background: #2563eb;
+  color: white;
+  border-radius: 6px;
+  text-decoration: none;
 }
 
 .close {
-  margin-top: 15px;
+  margin-top: 12px;
   font-size: 12px;
   cursor: pointer;
   color: #888;
 }
 
-/* 📱 MOBILE */
+/* MOBILE */
 @media (max-width: 900px) {
 
   #scene {
@@ -137,8 +128,6 @@ p { font-size: 14px; color: #444; }
   .hub {
     position: relative;
     transform: none;
-    top: auto;
-    left: auto;
     margin-bottom: 20px;
   }
 
@@ -163,9 +152,6 @@ p { font-size: 14px; color: #444; }
     width: 100%;
     height: 100%;
     border-radius: 0;
-    display: flex;
-    align-items: center;
-    justify-content: center;
   }
 }
 </style>
@@ -180,10 +166,9 @@ p { font-size: 14px; color: #444; }
       <div class="logo-wrap"><img src="/logo.png" /></div>
       <h3>SignalRoutes</h3>
       <p>Clear signals. Better decisions.</p>
-      <p style="font-size:14px; font-weight:500;">
+      <p style="font-size:13px;">
         A system of tools designed to cut through noise across money, business, news, and compliance.
       </p>
-      <p style="font-size:12px; color:#666;">Click any product to explore →</p>
     </div>
   </div>
 
@@ -217,42 +202,44 @@ p { font-size: 14px; color: #444; }
 <div id="modal" class="modal"></div>
 
 <script>
+function closeModal() {
+  document.getElementById('modal').style.display = 'none';
+}
+
 window.openModal = function(e,type) {
   const modal = document.getElementById('modal');
+  const formLink = "https://forms.gle/QB4RgS2FrzicuuJf7";
 
   const data = {
     signal: {
       title: "SignalRoutes",
-      text: "SignalRoutes is a connected system of focused tools designed to cut through noise across business, money, news, and compliance.",
-      extra: "Each product solves a specific problem—together they create clarity across your entire decision system.",
-      cta: "System overview"
+      text: "A connected system of tools designed to bring clarity across business, money, news, and compliance.",
+      extra: "Explore the ecosystem or connect to learn more.",
+      cta: "Connect / Learn More"
     },
     founder: {
       title: "FounderRoutes",
-      text: "A guided system that tells you exactly what to do next in your business—eliminating guesswork.",
-      extra: "Best for: founders and operators who want clarity and direction.",
-      link: "https://founder-routes-app-rep-production.up.railway.app/",
-      cta: "Explore FounderRoutes →"
+      text: "Get clear direction on what to do next in your business—without guesswork.",
+      extra: "Built for founders and operators who want clarity.",
+      cta: "Get access"
     },
     spend: {
       title: "SpendScore",
-      text: "A real-time financial awareness tool that helps you understand and improve your money habits.",
-      extra: "Track behavior and build better financial decisions.",
-      link: "mailto:Spendscorehelp@gmail.com",
-      cta: "Get early access →"
+      text: "Understand your money, track your habits, and improve decisions.",
+      extra: "Launching soon — early access available.",
+      cta: "Join early access"
     },
     source: {
       title: "SourceBrief",
-      text: "News distilled to what actually matters—filtered, summarized, and stripped of noise.",
-      extra: "Stay informed without wasting time.",
-      link: "https://forms.gle/diLbSQKf6aKchR3w7",
-      cta: "Join waitlist →"
+      text: "The news, distilled. What matters—nothing extra.",
+      extra: "Built for clarity without wasted time.",
+      cta: "Join waitlist"
     },
     compliance: {
       title: "ComplianceIQ",
-      text: "A simplified approach to compliance without spreadsheets or overwhelm.",
-      extra: "Built for business owners who need clarity.",
-      cta: "In development"
+      text: "Simplified compliance without overwhelm.",
+      extra: "Designed for business owners who need clarity.",
+      cta: "Get updates"
     }
   };
 
@@ -262,13 +249,16 @@ window.openModal = function(e,type) {
     <h3>${item.title}</h3>
     <p>${item.text}</p>
     <p>${item.extra}</p>
-    ${item.link ? `<a href="${item.link}" target="_blank">${item.cta}</a>` : `<p style="color:#2563eb;">${item.cta}</p>`}
+
+    <a href="${formLink}" target="_blank">
+      ${item.cta} →
+    </a>
+
     <div class="close" onclick="closeModal()">Close</div>
   `;
 
   modal.style.display = 'block';
 
-  /* MOBILE */
   if (window.innerWidth < 900) {
     modal.style.left = "0px";
     modal.style.top = "0px";
@@ -284,9 +274,5 @@ window.openModal = function(e,type) {
   }
 
   modal.style.top = rect.top + "px";
-};
-
-function closeModal() {
-  document.getElementById('modal').style.display = 'none';
 };
 </script>
