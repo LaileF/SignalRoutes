@@ -21,7 +21,7 @@ body {
   position: absolute;
   inset: 0;
   background: url('/circuit.png') center/1400px no-repeat;
-  opacity: 0.35;
+  opacity: 0.25;
     filter: #008C4A;
 }
 
@@ -202,7 +202,7 @@ p { font-size: 14px; color: #444; }
 <div id="modal" class="modal"></div>
 
 <script>
-function closeModal() {
+window.closeModal = function() {
   document.getElementById('modal').style.display = 'none';
 }
 
@@ -221,7 +221,8 @@ window.openModal = function(e,type) {
       title: "FounderRoutes",
       text: "Get clear direction on what to do next in your business—without guesswork.",
       extra: "Built for founders and operators who want clarity.",
-      cta: "Get access"
+      cta: "Get access",
+      link: "https://founder-routes-app-rep-production.up.railway.app/"
     },
     spend: {
       title: "SpendScore",
@@ -246,16 +247,22 @@ window.openModal = function(e,type) {
   const item = data[type];
 
   modal.innerHTML = `
-    <h3>${item.title}</h3>
-    <p>${item.text}</p>
-    <p>${item.extra}</p>
+  <h3>${item.title}</h3>
+  <p>${item.text}</p>
+  <p>${item.extra}</p>
 
-    <a href="${formLink}" target="_blank">
-      ${item.cta} →
+  ${item.link ? `
+    <a href="${item.link}" target="_blank" style="margin-right:10px;">
+      Visit →
     </a>
+  ` : ``}
 
-    <div class="close" onclick="closeModal()">Close</div>
-  `;
+  <a href="${formLink}" target="_blank">
+    ${item.cta} →
+  </a>
+
+  <div class="close" onclick="closeModal()">Close</div>
+`;
 
   modal.style.display = 'block';
 
