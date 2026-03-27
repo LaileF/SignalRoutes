@@ -22,7 +22,7 @@ body {
   inset: 0;
   background: url('/circuit.png') center/1400px no-repeat;
   opacity: 0.35;
-  filter: hue-rotate(120deg) brightness(1.2) saturate(2);
+  filter: none;
 }
 
 /* SCENE */
@@ -286,7 +286,7 @@ window.openModal = function(e,type) {
   modal.style.top = rect.top + "px";
 };
 
-window.closeModal = function() {
+function closeModal() {
   document.getElementById('modal').style.display = 'none';
 };
 </script>
