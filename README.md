@@ -1,64 +1,108 @@
-# Astro Starter Kit: Blog
+# SignalRoutes
 
-[![Deploy to Cloudflare](https://deploy.workers.cloudflare.com/button)](https://deploy.workers.cloudflare.com/?url=https://github.com/cloudflare/templates/tree/main/astro-blog-starter-template)
+**Clear signals. Better decisions.**
 
-![Astro Template Preview](https://github.com/withastro/astro/assets/2244813/ff10799f-a816-4703-b967-c78997e8323d)
+SignalRoutes is a connected system of tools designed to cut through noise across business, money, news, and compliance. This repository contains the landing hub that introduces and routes users to each product in the ecosystem.
 
-<!-- dash-content-start -->
+---
 
-Create a blog with Astro and deploy it on Cloudflare Workers as a [static website](https://developers.cloudflare.com/workers/static-assets/).
+## 🚀 Overview
 
-Features:
+SignalRoutes is not a single app — it’s a **modular decision system** made up of focused tools:
 
-- ✅ Minimal styling (make it your own!)
-- ✅ 100/100 Lighthouse performance
-- ✅ SEO-friendly with canonical URLs and OpenGraph data
-- ✅ Sitemap support
-- ✅ RSS Feed support
-- ✅ Markdown & MDX support
-- ✅ Built-in Observability logging
+* **FounderRoutes** → Business clarity and execution guidance
+* **SpendScore** → Real-time financial awareness and habit tracking
+* **SourceBrief** → News distilled to what actually matters
+* **ComplianceIQ** → Simplified compliance without overwhelm
 
-<!-- dash-content-end -->
+This site acts as the **entry point and routing layer**, helping users understand each product and take action.
 
-## Getting Started
+---
 
-Outside of this repo, you can start a new project with this template using [C3](https://developers.cloudflare.com/pages/get-started/c3/) (the `create-cloudflare` CLI):
+## 🧩 Purpose of This Repo
 
-```bash
-npm create cloudflare@latest -- --template=cloudflare/templates/astro-blog-starter-template
-```
+This project serves as:
 
-A live public deployment of this template is available at [https://astro-blog-starter-template.templates.workers.dev](https://astro-blog-starter-template.templates.workers.dev)
+* A **central hub** for the SignalRoutes ecosystem
+* A **product discovery experience**
+* A **lead capture system** (via Google Forms integration)
+* A **foundation for future expansion** (analytics, onboarding, automation)
 
-## 🚀 Project Structure
+---
 
-Astro looks for `.astro` or `.md` files in the `src/pages/` directory. Each page is exposed as a route based on its file name.
+## 🛠 Tech Stack
 
-There's nothing special about `src/components/`, but that's where we like to put any Astro/React/Vue/Svelte/Preact components.
+* [Astro](https://astro.build/) – Static site framework
+* HTML / CSS / Vanilla JS – Lightweight and fast
+* Deployed via Railway
+* Google Forms + Sheets – Lead capture and tracking
 
-The `src/content/` directory contains "collections" of related Markdown and MDX documents. Use `getCollection()` to retrieve posts from `src/content/blog/`, and type-check your frontmatter using an optional schema. See [Astro's Content Collections docs](https://docs.astro.build/en/guides/content-collections/) to learn more.
+---
 
-Any static assets, like images, can be placed in the `public/` directory.
+## ⚙️ Features
 
-## 🧞 Commands
+* Interactive product cards with modal details
+* Central “hub” layout representing system architecture
+* Mobile-responsive design
+* External lead capture via Google Forms
+* Clean, minimal frontend with no heavy dependencies
 
-All commands are run from the root of the project, from a terminal:
+---
 
-| Command                           | Action                                           |
-| :-------------------------------- | :----------------------------------------------- |
-| `npm install`                     | Installs dependencies                            |
-| `npm run dev`                     | Starts local dev server at `localhost:4321`      |
-| `npm run build`                   | Build your production site to `./dist/`          |
-| `npm run preview`                 | Preview your build locally, before deploying     |
-| `npm run astro ...`               | Run CLI commands like `astro add`, `astro check` |
-| `npm run astro -- --help`         | Get help using the Astro CLI                     |
-| `npm run build && npm run deploy` | Deploy your production site to Cloudflare        |
-| `npm wrangler tail`               | View real-time logs for all Workers              |
+## 📊 Data & Lead Capture
 
-## 👀 Want to learn more?
+All user interest is routed through a single Google Form and stored in Google Sheets.
 
-Check out [our documentation](https://docs.astro.build) or jump into our [Discord server](https://astro.build/chat).
+This allows:
 
-## Credit
+* Segmentation by product interest
+* Identification of users vs investors vs partners
+* Simple follow-up workflows
 
-This theme is based off of the lovely [Bear Blog](https://github.com/HermanMartinus/bearblog/).
+---
+
+## 🧭 Roadmap
+
+Planned improvements:
+
+* Pre-filled form routing based on product selection
+* Email automation (Resend integration)
+* Analytics for click tracking and engagement
+* Deeper product pages for each tool
+* User onboarding flows
+
+---
+
+## 🌐 Live Projects
+
+* FounderRoutes → https://founder-routes-app-rep-production.up.railway.app/
+* SourceBrief → https://sourcebrief.org/
+* SpendScore → (launching May)
+* ComplianceIQ → (in development)
+
+---
+
+## 🤝 Contributing / Feedback
+
+This project is actively evolving. Feedback is welcome—especially around:
+
+* Clarity of messaging
+* Product positioning
+* User experience
+
+---
+
+## 📌 Author
+
+Built and maintained by Laile F
+
+---
+
+## ⚡ Philosophy
+
+SignalRoutes is built on a simple idea:
+
+> Most people don’t need more information — they need clearer signals.
+
+This system is designed to provide exactly that.
+
