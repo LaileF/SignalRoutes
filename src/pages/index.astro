@@ -78,12 +78,28 @@ nav {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 28px 48px;
-  position: relative;
-  z-index: 10;
+  padding: 20px 48px;
+  position: sticky;
+  top: 0;
+  z-index: 100;
   border-bottom: 1px solid var(--border);
-  background: rgba(245,242,235,0.85);
-  backdrop-filter: blur(8px);
+  background: rgba(245,242,235,0.95);
+  backdrop-filter: blur(12px);
+  transition: box-shadow 0.3s;
+}
+nav.scrolled {
+  box-shadow: 0 2px 20px rgba(14,14,14,0.08);
+}
+/* progress bar */
+.scroll-progress {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 2px;
+  background: var(--signal);
+  width: 0%;
+  z-index: 200;
+  transition: width 0.1s linear;
 }
 .nav-logo {
   font-family: 'DM Serif Display', serif;
@@ -103,6 +119,11 @@ nav {
   transition: color 0.2s;
 }
 .nav-links a:hover { color: var(--ink); }
+.nav-links a.active {
+  color: var(--signal);
+  border-bottom: 2px solid var(--signal);
+  padding-bottom: 2px;
+}
 .nav-cta {
   background: var(--ink) !important;
   color: var(--paper) !important;
@@ -520,6 +541,7 @@ footer {
 </style>
 </head>
 <body>
+<div class="scroll-progress" id="scrollProgress"></div>
 
 <!-- ── NAV / HERO ── -->
 <section class="hero">
@@ -909,21 +931,55 @@ footer {
 </footer>
 
 <script>
-// Scroll reveal
-const observer = new IntersectionObserver((entries) => {
+// ── Scroll reveal
+const revealObserver = new IntersectionObserver((entries) => {
   entries.forEach(e => {
     if (e.isIntersecting) {
       e.target.classList.add('visible');
-      observer.unobserve(e.target);
+      revealObserver.unobserve(e.target);
     }
   });
 }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
 
-document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
-
-// Stagger grid children on reveal
+// ── Stagger grid children
 document.querySelectorAll('.traction-grid .traction-item, .apps-grid .app-card').forEach((el, i) => {
   el.style.transitionDelay = `${i * 0.08}s`;
+});
+
+// ── Sticky nav shadow + progress bar + active link
+const nav = document.querySelector('nav');
+const progress = document.getElementById('scrollProgress');
+const sections = ['about', 'apps', 'traction', 'roadmap', 'invest'];
+const navLinks = document.querySelectorAll('.nav-links a[href^="#"]');
+
+window.addEventListener('scroll', () => {
+  const scrollTop = window.scrollY;
+  const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+
+  // Shadow on scroll
+  nav.classList.toggle('scrolled', scrollTop > 20);
+
+  // Progress bar
+  const pct = docHeight > 0 ? (scrollTop / docHeight) * 100 : 0;
+  progress.style.width = pct + '%';
+
+  // Active nav link — find which section is in view
+  let current = '';
+  sections.forEach(id => {
+    const el = document.getElementById(id);
+    if (el) {
+      const rect = el.getBoundingClientRect();
+      if (rect.top <= 120) current = id;
+    }
+  });
+
+  navLinks.forEach(link => {
+    link.classList.remove('active');
+    if (link.getAttribute('href') === '#' + current) {
+      link.classList.add('active');
+    }
+  });
 });
 </script>
 
