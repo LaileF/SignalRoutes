@@ -1,0 +1,243 @@
+---
+// SignalRoutes — src/pages/privacy.astro
+---
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SpendScore Privacy Policy — SignalRoutes</title>
+<meta name="description" content="SpendScore privacy policy and data deletion information.">
+<link rel="icon" href="/logo.png">
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500;600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+:root {
+  --ink: #0e0e0e;
+  --paper: #f5f2eb;
+  --warm: #e8e2d5;
+  --signal: #c8441a;
+  --muted: #7a7468;
+  --border: #d4cfc5;
+  --green: #2a6e4a;
+}
+body { font-family: 'DM Sans', sans-serif; background: var(--paper); color: var(--ink); }
+
+nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 48px;
+  border-bottom: 1px solid var(--border);
+  background: rgba(245,242,235,0.97);
+}
+.nav-logo { font-family: 'DM Serif Display', serif; font-size: 1.3rem; color: var(--ink); text-decoration: none; display: flex; align-items: center; gap: 8px; }
+.nav-logo span { color: var(--signal); }
+.nav-logo img { height: 26px; object-fit: contain; }
+.nav-back { font-size: 0.82rem; color: var(--muted); text-decoration: none; font-weight: 500; letter-spacing: 0.04em; }
+.nav-back:hover { color: var(--signal); }
+
+.hero {
+  background: var(--ink);
+  padding: 60px 48px 48px;
+  position: relative;
+  overflow: hidden;
+}
+.hero::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: linear-gradient(rgba(212,207,197,0.08) 1px, transparent 1px), linear-gradient(90deg, rgba(212,207,197,0.08) 1px, transparent 1px);
+  background-size: 60px 60px;
+}
+.hero-label { font-family: 'DM Mono', monospace; font-size: 0.72rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--signal); margin-bottom: 12px; position: relative; }
+.hero-title { font-family: 'DM Serif Display', serif; font-size: clamp(2rem, 4vw, 3rem); color: var(--paper); letter-spacing: -0.02em; margin-bottom: 12px; position: relative; }
+.hero-sub { font-size: 0.88rem; color: var(--muted); font-family: 'DM Mono', monospace; position: relative; }
+
+.container { max-width: 760px; margin: 0 auto; padding: 60px 48px; }
+
+.section {
+  margin-bottom: 48px;
+  padding: 36px 40px;
+  background: white;
+  border: 1px solid var(--border);
+  border-radius: 2px;
+  border-left: 4px solid var(--signal);
+}
+
+.section h2 {
+  font-family: 'DM Serif Display', serif;
+  font-size: 1.4rem;
+  color: var(--ink);
+  margin-bottom: 16px;
+  letter-spacing: -0.01em;
+}
+
+.section p {
+  font-size: 0.95rem;
+  color: var(--muted);
+  line-height: 1.75;
+  margin-bottom: 12px;
+  font-weight: 300;
+}
+
+.section p:last-child { margin-bottom: 0; }
+
+.section p strong { color: var(--ink); font-weight: 500; }
+
+.delete-section {
+  border-left-color: var(--green);
+}
+
+.delete-section h2 { color: var(--green); }
+
+.data-list {
+  list-style: none;
+  margin-top: 16px;
+}
+.data-list li {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 0;
+  border-bottom: 1px solid var(--border);
+  font-size: 0.92rem;
+  color: var(--ink);
+}
+.data-list li:last-child { border-bottom: none; }
+.data-list li::before {
+  content: '✓';
+  color: var(--green);
+  font-weight: 600;
+  font-size: 0.85rem;
+  flex-shrink: 0;
+}
+
+.email-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 20px;
+  padding: 12px 24px;
+  background: var(--signal);
+  color: white;
+  text-decoration: none;
+  font-size: 0.88rem;
+  font-weight: 600;
+  border-radius: 2px;
+  transition: background 0.2s;
+}
+.email-link:hover { background: var(--ink); }
+
+.email-link-green {
+  background: var(--green);
+}
+.email-link-green:hover { background: var(--ink); }
+
+.note {
+  background: var(--warm);
+  border: 1px solid var(--border);
+  padding: 16px 20px;
+  border-radius: 2px;
+  margin-top: 16px;
+  font-size: 0.85rem;
+  color: var(--muted);
+  line-height: 1.6;
+}
+
+footer {
+  padding: 32px 48px;
+  border-top: 1px solid var(--border);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.footer-note { font-size: 0.78rem; color: var(--muted); font-family: 'DM Mono', monospace; }
+
+@media (max-width: 600px) {
+  nav { padding: 16px 20px; }
+  .hero { padding: 40px 24px 36px; }
+  .container { padding: 40px 20px; }
+  .section { padding: 24px 24px; }
+  footer { flex-direction: column; gap: 8px; text-align: center; }
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="/" class="nav-logo">
+    <img src="/logo.png" alt="SignalRoutes">Signal<span>Routes</span>
+  </a>
+  <a href="/" class="nav-back">← Back to SignalRoutes</a>
+</nav>
+
+<div class="hero">
+  <div class="hero-label">Legal · SpendScore</div>
+  <h1 class="hero-title">Privacy Policy</h1>
+  <div class="hero-sub">Last updated: March 2026</div>
+</div>
+
+<div class="container">
+
+  <!-- Data Collection -->
+  <div class="section">
+    <h2>What We Collect</h2>
+    <p>SpendScore collects your <strong>email address</strong> and <strong>expense transaction data</strong> that you enter manually or via receipt scanning.</p>
+    <p>This data is stored securely via <strong>Supabase</strong> and is <strong>never sold to third parties</strong>.</p>
+    <p>Receipt images are processed by AI to extract transaction amounts and are <strong>not stored</strong> after processing.</p>
+  </div>
+
+  <!-- Ads -->
+  <div class="section">
+    <h2>Advertising</h2>
+    <p>This app uses <strong>Google AdMob</strong> to serve advertisements. AdMob may collect device identifiers in accordance with <a href="https://policies.google.com/privacy" target="_blank" style="color:var(--signal);">Google's privacy policy</a>.</p>
+    <div class="note">You can review Google's data practices at policies.google.com/privacy</div>
+  </div>
+
+  <!-- Your Rights -->
+  <div class="section">
+    <h2>Your Rights</h2>
+    <p>You may <strong>delete your data at any time</strong> by contacting us at the email below. We will remove your account and all associated data within 7 days of your request.</p>
+    <a href="mailto:connect@signalroutes.work?subject=Privacy Policy Inquiry" class="email-link">
+      ✉️ &nbsp;connect@signalroutes.work
+    </a>
+  </div>
+
+  <!-- Delete Account -->
+  <div class="section delete-section">
+    <h2>Delete Your Account</h2>
+    <p>To request deletion of your SpendScore account and all associated data, email us with the subject line <strong>"Delete My Account"</strong>. We will delete your account and all data within <strong>7 days</strong>.</p>
+
+    <p style="margin-top:16px;"><strong>Data deleted includes:</strong></p>
+    <ul class="data-list">
+      <li>Email address</li>
+      <li>All transaction history</li>
+      <li>Budget settings</li>
+      <li>Profile information</li>
+    </ul>
+
+    <a href="mailto:connect@signalroutes.work?subject=Delete My Account" class="email-link email-link-green">
+      ✉️ &nbsp;Request Account Deletion
+    </a>
+  </div>
+
+  <!-- Contact -->
+  <div class="section">
+    <h2>Contact</h2>
+    <p>Questions about this privacy policy or your data? Reach out any time:</p>
+    <a href="mailto:connect@signalroutes.work" class="email-link">
+      ✉️ &nbsp;connect@signalroutes.work
+    </a>
+  </div>
+
+</div>
+
+<footer>
+  <div class="footer-note">© 2026 SignalRoutes · SpendScore · Laile Fletcher</div>
+  <div class="footer-note"><a href="/" style="color:var(--muted);text-decoration:none;">signalroutes.work</a></div>
+</footer>
+
+</body>
+</html>
